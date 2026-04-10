@@ -1,0 +1,19 @@
+negative_prompt: "low quality, blurry, distorted hands, extra fingers, text, watermark"
+seeds:
+  - 101
+  - 202
+  - 303
+lora_weights:
+  - baseline
+  - 0.6
+  - 0.8
+  - 1.0
+simple:
+  - "<trigger_token>, a portrait of a woman near a window, soft natural light"
+  - "<trigger_token>, a coffee cup on a wooden table, clean composition"
+medium:
+  - "<trigger_token>, a fashion editorial portrait, dramatic rim light, 85mm lens, rich color contrast"
+  - "<trigger_token>, a bookstore interior, warm ambient lighting, cinematic framing"
+complex:
+  - "<trigger_token>, a rainy neon street market at night, layered depth, reflective surfaces, crowded scene"
+  - "<trigger_token>, a surreal museum hall with floating sculptures, volumetric light, wide establishing shot"
