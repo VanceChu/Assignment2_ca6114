@@ -8,6 +8,7 @@ This directory bootstraps a single-workspace SDXL LoRA pipeline for the `6-a800`
 - Remote repo path: `/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114`
 - Runtime root: `<repo>/runtime`
 - Working directory: `runtime/workspace/`
+- Checkpoint output root: `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace>/`
 - Shared training backend: `sd-scripts`
 - Shared inference backend: `ComfyUI` (optional)
 - Python runner strategy: project-local `venv`, not new conda envs
@@ -86,4 +87,5 @@ runtime/
 - `bootstrap_host.sh` clones `sd-scripts` and creates `runtime/venvs/sdscripts`.
 - Set `INSTALL_COMFYUI=1` before running `bootstrap_host.sh` if you also want `runtime/venvs/comfyui`.
 - `train_lora.sh` still uses per-GPU `flock`, so you can safely choose which GPU to occupy.
+- LoRA checkpoints are written to `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace>/`, not `runtime/workspace/checkpoints/`.
 - The current pipeline is intentionally single-workspace to reduce the learning surface while you first get one LoRA run working end-to-end.

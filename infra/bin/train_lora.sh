@@ -41,7 +41,8 @@ else
 fi
 
 train_root="${WORKSPACE_ROOT}/dataset_train"
-output_dir="${WORKSPACE_ROOT}/checkpoints"
+checkpoint_root="${CHECKPOINT_OUTPUT_ROOT:-/mnt/kai_ckp/model/Assignment2_ca6114}"
+output_dir="${checkpoint_root}/$(workspace_name)"
 log_dir="${WORKSPACE_ROOT}/logs"
 tokenizer_cache_dir="${TOKENIZER_CACHE_DIR:-${SHARED_ROOT}/tokenizers}"
 mkdir -p "${output_dir}" "${log_dir}" "${LORAS_ROOT}" "${tokenizer_cache_dir}"

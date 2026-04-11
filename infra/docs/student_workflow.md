@@ -49,6 +49,8 @@ Full run:
 bash infra/bin/train_lora.sh --gpu 0
 ```
 
+Checkpoints are saved under `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace_name>/`.
+
 ## 5. Generate the validation manifest
 
 ```bash
