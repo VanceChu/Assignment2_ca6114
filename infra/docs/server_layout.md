@@ -31,23 +31,23 @@ runtime/
       checkpoints/
       loras/
       vae/
-  students/
-    student_a/
-      dataset_raw/
-      dataset_curated/
-      captions/
-      dataset_train/
-      configs/
-      checkpoints/
-      outputs/
-      report_assets/
-      logs/
-    student_b/
-    student_c/
+  workspace/
+    dataset_raw/
+    dataset_curated/
+    captions/
+    dataset_train/
+    configs/
+    checkpoints/
+    outputs/
+    report_assets/
+    logs/
+  venvs/
+    sdscripts/
+    comfyui/
 ```
 
-## Ownership Rules
+## Notes
 
-- Shared code and shared models live under `runtime/shared/`.
-- Student-specific artifacts live under `runtime/students/<student_id>/`.
-- Each GPU lock is stored under `runtime/shared/locks/gpu<id>.lock`.
+- `runtime/shared/` stores shared code, locks, and model assets.
+- `runtime/workspace/` is the only place you need for the single-user pipeline.
+- GPU locks live under `runtime/shared/locks/gpu<id>.lock`.

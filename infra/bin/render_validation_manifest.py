@@ -13,7 +13,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--template', required=True)
     parser.add_argument('--trigger-token', required=True)
     parser.add_argument('--output', required=True)
-    parser.add_argument('--student-id', required=True)
+    parser.add_argument('--workspace-name', required=True)
     return parser.parse_args()
 
 
@@ -27,7 +27,7 @@ def main() -> None:
             for seed in data['seeds']:
                 for weight in data['lora_weights']:
                     rows.append({
-                        'student_id': args.student_id,
+                        'workspace_name': args.workspace_name,
                         'tier': tier,
                         'seed': seed,
                         'lora_weight': weight,
@@ -37,7 +37,7 @@ def main() -> None:
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open('w', newline='', encoding='utf-8') as fh:
-        writer = csv.DictWriter(fh, fieldnames=['student_id', 'tier', 'seed', 'lora_weight', 'prompt', 'negative_prompt'])
+        writer = csv.DictWriter(fh, fieldnames=['workspace_name', 'tier', 'seed', 'lora_weight', 'prompt', 'negative_prompt'])
         writer.writeheader()
         writer.writerows(rows)
     print(output_path)

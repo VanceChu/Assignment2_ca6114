@@ -1,46 +1,63 @@
-# Student Workflow
+# Single Workspace Workflow
 
-## 1. Copy the config template
+## 1. Initialize the workspace
 
 ```bash
-cp infra/templates/sdxl_style_lora.env.example runtime/students/<student_id>/configs/sdxl_style_lora.env
+bash infra/bin/create_workspace.sh
+cp infra/templates/sdxl_style_lora.env.example runtime/workspace/configs/sdxl_style_lora.env
 ```
 
-Update:
+Edit the config and set:
 
-- `STUDENT_ID`
 - `TRIGGER_TOKEN`
 - `BASE_MODEL`
 - optional train hyperparameters
 
 ## 2. Prepare your dataset
 
-- Put `20-30` curated style images into `dataset_curated/`.
-- Put one `.txt` caption per image into `captions/`.
-- Every caption must include the trigger token.
-- All images should represent one coherent visual style.
+Put your data into:
+
+- `runtime/workspace/dataset_curated/`
+- `runtime/workspace/captions/`
+
+Rules:
+
+- use `20-30` curated images
+- provide one same-name `.txt` caption per image
+- every caption must include the trigger token
+- keep the style coherent across the full dataset
 
 ## 3. Validate and build the train folder
 
 ```bash
-bash infra/bin/prepare_dataset.sh <student_id>
+bash infra/bin/prepare_dataset.sh
 ```
 
-This validates image count, caption parity, trigger token usage, image size, and creates `dataset_train/10_<trigger_token>/` for `sd-scripts`.
+This validates image count, caption parity, trigger token usage, image size, and builds `runtime/workspace/dataset_train/`.
 
 ## 4. Run LoRA training
 
-```bash
-bash infra/bin/train_student_lora.sh <student_id> --gpu 0
-```
-
-For a short smoke run:
+Smoke test:
 
 ```bash
-bash infra/bin/train_student_lora.sh <student_id> --gpu 0 --smoke
+bash infra/bin/train_lora.sh --gpu 0 --smoke
 ```
 
-## 5. Keep report evidence
+Full run:
+
+```bash
+bash infra/bin/train_lora.sh --gpu 0
+```
+
+## 5. Generate the validation manifest
+
+```bash
+bash infra/bin/run_validation_matrix.sh
+```
+
+This writes `runtime/workspace/report_assets/validation_manifest.csv`.
+
+## 6. Keep report evidence
 
 Retain these files:
 

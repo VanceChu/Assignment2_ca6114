@@ -6,7 +6,7 @@ INFRA_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 PROJECT_ROOT="$(cd "${INFRA_ROOT}/.." && pwd)"
 RUNTIME_ROOT="${SCENARIO3_RUNTIME_ROOT:-${PROJECT_ROOT}/runtime}"
 SHARED_ROOT="${RUNTIME_ROOT}/shared"
-STUDENTS_ROOT="${RUNTIME_ROOT}/students"
+WORKSPACE_ROOT="${RUNTIME_ROOT}/workspace"
 MODELS_ROOT="${SHARED_ROOT}/models"
 CHECKPOINTS_ROOT="${MODELS_ROOT}/checkpoints"
 LORAS_ROOT="${MODELS_ROOT}/loras"
@@ -22,7 +22,11 @@ SDSCRIPTS_PYTHON="${SDSCRIPTS_VENV}/bin/python"
 COMFYUI_PYTHON="${COMFYUI_VENV}/bin/python"
 
 ensure_runtime_tree() {
-  mkdir -p "${CHECKPOINTS_ROOT}" "${LORAS_ROOT}" "${VAE_ROOT}" "${LOG_ROOT}" "${LOCK_ROOT}" "${STUDENTS_ROOT}" "${VENV_ROOT}"
+  mkdir -p "${CHECKPOINTS_ROOT}" "${LORAS_ROOT}" "${VAE_ROOT}" "${LOG_ROOT}" "${LOCK_ROOT}" "${WORKSPACE_ROOT}" "${VENV_ROOT}"
+}
+
+ensure_workspace_dirs() {
+  mkdir -p     "${WORKSPACE_ROOT}/dataset_raw"     "${WORKSPACE_ROOT}/dataset_curated"     "${WORKSPACE_ROOT}/captions"     "${WORKSPACE_ROOT}/dataset_train"     "${WORKSPACE_ROOT}/configs"     "${WORKSPACE_ROOT}/checkpoints"     "${WORKSPACE_ROOT}/outputs"     "${WORKSPACE_ROOT}/report_assets"     "${WORKSPACE_ROOT}/logs"
 }
 
 require_python_executable() {
@@ -35,23 +39,13 @@ require_python_executable() {
   fi
 }
 
-require_student_id() {
-  local student_id="${1:-}"
-  case "${student_id}" in
-    student_a|student_b|student_c) ;;
-    *)
-      echo "student_id must be one of: student_a, student_b, student_c" >&2
-      exit 1
-      ;;
-  esac
+workspace_config_path() {
+  printf '%s
+' "${WORKSPACE_ROOT}/configs/sdxl_style_lora.env"
 }
 
-student_root() {
+workspace_name() {
+  local configured_name="${WORKSPACE_NAME:-workspace}"
   printf '%s
-' "${STUDENTS_ROOT}/${1}"
-}
-
-student_config_path() {
-  printf '%s
-' "$(student_root "$1")/configs/sdxl_style_lora.env"
+' "${configured_name}"
 }

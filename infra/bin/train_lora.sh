@@ -4,15 +4,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/common.sh"
 
-if [[ "$#" -lt 1 ]]; then
-  echo "usage: $0 student_id [--gpu <id>] [--smoke]" >&2
-  exit 1
-fi
-
-student_id="$1"
-shift
-require_student_id "${student_id}"
-
 gpu_id=0
 smoke=0
 while [[ "$#" -gt 0 ]]; do
@@ -33,8 +24,9 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 ensure_runtime_tree
+ensure_workspace_dirs
 require_python_executable "${SDSCRIPTS_PYTHON}" "sd-scripts python"
-config_path="$(student_config_path "${student_id}")"
+config_path="$(workspace_config_path)"
 if [[ ! -f "${config_path}" ]]; then
   cp "${INFRA_ROOT}/templates/sdxl_style_lora.env.example" "${config_path}"
   echo "created config template at ${config_path}; edit it and rerun" >&2
@@ -42,16 +34,15 @@ if [[ ! -f "${config_path}" ]]; then
 fi
 
 source "${config_path}"
-student_dir="$(student_root "${student_id}")"
 if [[ "${smoke}" == '1' ]]; then
-  bash "${SCRIPT_DIR}/prepare_dataset.sh" "${student_id}" --smoke
+  bash "${SCRIPT_DIR}/prepare_dataset.sh" --smoke
 else
-  bash "${SCRIPT_DIR}/prepare_dataset.sh" "${student_id}"
+  bash "${SCRIPT_DIR}/prepare_dataset.sh"
 fi
 
-train_root="${student_dir}/dataset_train"
-output_dir="${student_dir}/checkpoints"
-log_dir="${student_dir}/logs"
+train_root="${WORKSPACE_ROOT}/dataset_train"
+output_dir="${WORKSPACE_ROOT}/checkpoints"
+log_dir="${WORKSPACE_ROOT}/logs"
 mkdir -p "${output_dir}" "${log_dir}" "${LORAS_ROOT}"
 
 if [[ ! -f "${BASE_MODEL}" ]]; then
@@ -70,16 +61,17 @@ if [[ "${smoke}" == '1' ]]; then
   save_every=50
 fi
 
+run_name="$(workspace_name)"
 warmup_steps="$(python3 -c "import math; print(max(1, math.ceil(${max_steps} * ${WARMUP_RATIO:-0.05})))")"
 timestamp="$(date '+%Y%m%d_%H%M%S')"
-output_prefix="${OUTPUT_PREFIX:-${student_id}_sdxl_style_lora}"
+output_prefix="${OUTPUT_PREFIX:-${run_name}_sdxl_style_lora}"
 log_path="${log_dir}/train_${timestamp}_gpu${gpu_id}.log"
 lock_path="${LOCK_ROOT}/gpu${gpu_id}.lock"
 
+printf 'workspace=%s
+' "${run_name}" | tee "${log_path}"
 printf 'gpu=%s
-' "${gpu_id}" | tee "${log_path}"
-printf 'student=%s
-' "${student_id}" | tee -a "${log_path}"
+' "${gpu_id}" | tee -a "${log_path}"
 printf 'base_model=%s
 ' "${BASE_MODEL}" | tee -a "${log_path}"
 printf 'train_root=%s

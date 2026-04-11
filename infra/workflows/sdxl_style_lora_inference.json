@@ -16,7 +16,7 @@
         "3",
         1
       ],
-      "lora_name": "student_a_sdxl_style_lora_step1200.safetensors",
+      "lora_name": "workspace_sdxl_style_lora_step1200.safetensors",
       "strength_model": 0.8,
       "strength_clip": 0.8
     }
@@ -24,7 +24,7 @@
   "5": {
     "class_type": "CLIPTextEncode",
     "inputs": {
-      "text": "<student_a_style>, editorial fashion portrait, dramatic rim light, shallow depth of field",
+      "text": "<my_style>, editorial fashion portrait, dramatic rim light, shallow depth of field",
       "clip": [
         "4",
         1
@@ -92,7 +92,7 @@
   "10": {
     "class_type": "SaveImage",
     "inputs": {
-      "filename_prefix": "validation/student_a",
+      "filename_prefix": "validation/workspace",
       "images": [
         "9",
         0
