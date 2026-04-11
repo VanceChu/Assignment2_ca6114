@@ -10,7 +10,7 @@ This directory bootstraps a single-workspace SDXL LoRA pipeline for the `6-a800`
 - Working directory: `runtime/workspace/`
 - Checkpoint output root: `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace>/`
 - Shared training backend: `sd-scripts`
-- Shared inference backend: `ComfyUI` (optional)
+- Shared inference backend: `ComfyUI`
 - Python runner strategy: project-local `venv`, not new conda envs
 
 ## One-Person Quick Start
@@ -58,6 +58,14 @@ Generate the validation manifest:
 bash infra/bin/run_validation_matrix.sh
 ```
 
+This now:
+
+- regenerates `runtime/workspace/report_assets/validation_manifest.csv`
+- publishes the base model and latest LoRA into `runtime/shared/models/`
+- auto-starts ComfyUI on `127.0.0.1:8188` when needed
+- queues the full validation batch through the ComfyUI HTTP API
+- writes execution results to `runtime/workspace/report_assets/validation_execution.csv`
+
 ## Current Workspace Layout
 
 ```text
@@ -85,7 +93,8 @@ runtime/
 ## Notes
 
 - `bootstrap_host.sh` clones `sd-scripts` and creates `runtime/venvs/sdscripts`.
-- Set `INSTALL_COMFYUI=1` before running `bootstrap_host.sh` if you also want `runtime/venvs/comfyui`.
+- `bootstrap_host.sh` now installs ComfyUI by default and writes `runtime/shared/comfyui/extra_model_paths.yaml` so ComfyUI loads shared checkpoints and LoRAs.
 - `train_lora.sh` still uses per-GPU `flock`, so you can safely choose which GPU to occupy.
 - LoRA checkpoints are written to `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace>/`, not `runtime/workspace/checkpoints/`.
+- `train_lora.sh` publishes the latest trained LoRA as `runtime/shared/models/loras/<workspace>_latest.safetensors`.
 - The current pipeline is intentionally single-workspace to reduce the learning surface while you first get one LoRA run working end-to-end.

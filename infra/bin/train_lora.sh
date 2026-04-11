@@ -45,6 +45,7 @@ checkpoint_root="${CHECKPOINT_OUTPUT_ROOT:-/mnt/kai_ckp/model/Assignment2_ca6114
 output_dir="${checkpoint_root}/$(workspace_name)"
 log_dir="${WORKSPACE_ROOT}/logs"
 tokenizer_cache_dir="${TOKENIZER_CACHE_DIR:-${SHARED_ROOT}/tokenizers}"
+comfyui_asset_env="${WORKSPACE_ROOT}/report_assets/comfyui_assets.env"
 mkdir -p "${output_dir}" "${log_dir}" "${LORAS_ROOT}" "${tokenizer_cache_dir}"
 
 if [[ ! -f "${BASE_MODEL}" ]]; then
@@ -88,3 +89,12 @@ printf 'attention_backend=%s
 ' "${attention_backend_flag}" | tee -a "${log_path}"
 
 flock "${lock_path}" env CUDA_VISIBLE_DEVICES="${gpu_id}" "${SDSCRIPTS_PYTHON}" "${SDSCRIPTS_ROOT}/sdxl_train_network.py"   --pretrained_model_name_or_path "${BASE_MODEL}"   --train_data_dir "${train_root}"   --resolution "${RESOLUTION:-1024,1024}"   --output_dir "${output_dir}"   --output_name "${output_prefix}"   --save_model_as safetensors   --network_module networks.lora   --network_dim "${NETWORK_DIM:-16}"   --network_alpha "${NETWORK_ALPHA:-16}"   --learning_rate "${LEARNING_RATE:-1e-4}"   --unet_lr "${UNET_LR:-1e-4}"   --text_encoder_lr "${TEXT_ENCODER_LR:-5e-5}"   --lr_scheduler "${LR_SCHEDULER:-cosine}"   --lr_warmup_steps "${warmup_steps}"   --train_batch_size "${BATCH_SIZE:-1}"   --max_train_steps "${max_steps}"   --save_every_n_steps "${save_every}"   --mixed_precision "${MIXED_PRECISION:-bf16}"   --save_precision "${SAVE_PRECISION:-bf16}"   --optimizer_type AdamW8bit   --caption_extension .txt   --tokenizer_cache_dir "${tokenizer_cache_dir}"   --cache_latents   --gradient_checkpointing   ${attention_backend_flag} 2>&1 | tee -a "${log_path}"
+
+"${SDSCRIPTS_PYTHON}" "${SCRIPT_DIR}/publish_comfyui_assets.py" \
+  --base-model-path "${BASE_MODEL}" \
+  --lora-dir "${output_dir}" \
+  --output-prefix "${output_prefix}" \
+  --checkpoints-root "${CHECKPOINTS_ROOT}" \
+  --loras-root "${LORAS_ROOT}" \
+  --workspace-name "$(workspace_name)" \
+  --output-env "${comfyui_asset_env}" | tee -a "${log_path}"

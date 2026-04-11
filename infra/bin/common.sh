@@ -20,6 +20,7 @@ SDSCRIPTS_VENV="${VENV_ROOT}/sdscripts"
 COMFYUI_VENV="${VENV_ROOT}/comfyui"
 SDSCRIPTS_PYTHON="${SDSCRIPTS_VENV}/bin/python"
 COMFYUI_PYTHON="${COMFYUI_VENV}/bin/python"
+COMFYUI_EXTRA_MODEL_PATHS="${COMFYUI_ROOT}/extra_model_paths.yaml"
 
 ensure_runtime_tree() {
   mkdir -p "${CHECKPOINTS_ROOT}" "${LORAS_ROOT}" "${VAE_ROOT}" "${LOG_ROOT}" "${LOCK_ROOT}" "${WORKSPACE_ROOT}" "${VENV_ROOT}"

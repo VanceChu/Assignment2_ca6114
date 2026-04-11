@@ -6,7 +6,7 @@ source "${SCRIPT_DIR}/common.sh"
 
 ensure_runtime_tree
 
-INSTALL_COMFYUI="${INSTALL_COMFYUI:-0}"
+INSTALL_COMFYUI="${INSTALL_COMFYUI:-1}"
 TORCH_INDEX_URL="${TORCH_INDEX_URL:-https://download.pytorch.org/whl/cu121}"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 
@@ -25,6 +25,16 @@ clone_if_missing() {
   fi
 }
 
+write_comfyui_model_paths() {
+  cat > "${COMFYUI_EXTRA_MODEL_PATHS}" <<EOF
+assignment2_ca6114:
+  base_path: ${MODELS_ROOT}
+  checkpoints: checkpoints
+  loras: loras
+  vae: vae
+EOF
+}
+
 clone_if_missing https://github.com/kohya-ss/sd-scripts "${SDSCRIPTS_ROOT}"
 create_venv_if_missing "${SDSCRIPTS_VENV}"
 
@@ -37,7 +47,7 @@ env PIP_INDEX_URL="${PIP_INDEX_URL}" "${SDSCRIPTS_PYTHON}" -m pip install --upgr
 env PIP_INDEX_URL="${PIP_INDEX_URL}" "${SDSCRIPTS_PYTHON}" -m pip install bitsandbytes tensorboard pillow pyyaml
 
 if [[ "${INSTALL_COMFYUI}" == "1" ]]; then
-  clone_if_missing https://github.com/comfyanonymous/ComfyUI "${COMFYUI_ROOT}"
+  clone_if_missing https://github.com/Comfy-Org/ComfyUI "${COMFYUI_ROOT}"
   create_venv_if_missing "${COMFYUI_VENV}"
   env PIP_INDEX_URL="${PIP_INDEX_URL}" "${COMFYUI_PYTHON}" -m pip install --upgrade pip
   "${COMFYUI_PYTHON}" -m pip install torch torchvision --index-url "${TORCH_INDEX_URL}"
@@ -45,6 +55,7 @@ if [[ "${INSTALL_COMFYUI}" == "1" ]]; then
     cd "${COMFYUI_ROOT}"
     env PIP_INDEX_URL="${PIP_INDEX_URL}" "${COMFYUI_PYTHON}" -m pip install -r requirements.txt
   )
+  write_comfyui_model_paths
 fi
 
 printf 'runtime_root=%s

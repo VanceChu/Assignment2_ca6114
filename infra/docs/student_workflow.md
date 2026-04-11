@@ -57,7 +57,12 @@ Checkpoints are saved under `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace_na
 bash infra/bin/run_validation_matrix.sh
 ```
 
-This writes `runtime/workspace/report_assets/validation_manifest.csv`.
+This writes:
+
+- `runtime/workspace/report_assets/validation_manifest.csv`
+- `runtime/workspace/report_assets/validation_execution.csv`
+
+It also publishes your latest LoRA into the shared ComfyUI model path and queues the validation batch through ComfyUI automatically.
 
 ## 6. Keep report evidence
 

@@ -61,6 +61,8 @@ runtime/
 ## Notes
 
 - `runtime/shared/` stores shared code, locks, and model assets.
+- `runtime/shared/comfyui/extra_model_paths.yaml` points ComfyUI at `runtime/shared/models/checkpoints`, `runtime/shared/models/loras`, and `runtime/shared/models/vae`.
 - LoRA checkpoint outputs are stored outside `runtime/` under `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace_name>/`.
+- The latest published LoRA alias lives under `runtime/shared/models/loras/<workspace_name>_latest.safetensors`.
 - `runtime/workspace/` is the only place you need for the single-user pipeline.
 - GPU locks live under `runtime/shared/locks/gpu<id>.lock`.

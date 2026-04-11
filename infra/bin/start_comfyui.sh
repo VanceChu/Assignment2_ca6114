@@ -11,4 +11,9 @@ if [[ ! -f "${COMFYUI_ROOT}/main.py" ]]; then
 fi
 
 port="${COMFYUI_PORT:-8188}"
-"${COMFYUI_PYTHON}" "${COMFYUI_ROOT}/main.py" --listen 127.0.0.1 --port "${port}"
+extra_model_paths_args=()
+if [[ -f "${COMFYUI_EXTRA_MODEL_PATHS}" ]]; then
+  extra_model_paths_args+=(--extra-model-paths-config "${COMFYUI_EXTRA_MODEL_PATHS}")
+fi
+
+"${COMFYUI_PYTHON}" "${COMFYUI_ROOT}/main.py" --listen 127.0.0.1 --port "${port}" "${extra_model_paths_args[@]}"
