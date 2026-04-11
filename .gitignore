@@ -24,3 +24,5 @@ runtime/workspace/configs/*
 
 runtime/workspace/report_assets/*
 !runtime/workspace/report_assets/van_gogh_sources.csv
+!runtime/workspace/report_assets/validation_manifest.csv
+!runtime/workspace/report_assets/validation_execution.csv
