@@ -116,6 +116,23 @@ class SingleWorkspaceInfraTests(unittest.TestCase):
         script = (REPO_ROOT / 'infra/bin/bootstrap_host.sh').read_text(encoding='utf-8')
         self.assertIn('INSTALL_COMFYUI="${INSTALL_COMFYUI:-1}"', script)
 
+    def test_bootstrap_host_registers_comfyui_example_workflow(self) -> None:
+        script = (REPO_ROOT / 'infra/bin/bootstrap_host.sh').read_text(encoding='utf-8')
+        common = (REPO_ROOT / 'infra/bin/common.sh').read_text(encoding='utf-8')
+        self.assertIn('COMFYUI_TEMPLATE_NODE_NAME="assignment2_ca6114_templates"', common)
+        self.assertIn('COMFYUI_TEMPLATE_WORKFLOWS_ROOT', common)
+        self.assertIn('install_comfyui_example_workflow', script)
+        self.assertIn('sdxl_style_lora_inference.json', script)
+
+    def test_repo_keeps_manual_comfyui_workflow_template(self) -> None:
+        workflow = REPO_ROOT / 'infra/workflows/sdxl_style_lora_inference.json'
+        self.assertTrue(workflow.is_file())
+        payload = json.loads(workflow.read_text(encoding='utf-8'))
+        self.assertIn('3', payload)
+        self.assertIn('10', payload)
+        self.assertEqual(payload['3']['class_type'], 'CheckpointLoaderSimple')
+        self.assertEqual(payload['10']['class_type'], 'SaveImage')
+
     def test_publish_comfyui_assets_creates_workspace_aliases(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp_path = Path(tmpdir)

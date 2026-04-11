@@ -94,6 +94,7 @@ runtime/
 
 - `bootstrap_host.sh` clones `sd-scripts` and creates `runtime/venvs/sdscripts`.
 - `bootstrap_host.sh` now installs ComfyUI by default and writes `runtime/shared/comfyui/extra_model_paths.yaml` so ComfyUI loads shared checkpoints and LoRAs.
+- `bootstrap_host.sh` also registers `sdxl_style_lora_inference.json` as a ComfyUI custom-node example workflow, so it appears in the UI `Templates` browser.
 - `train_lora.sh` still uses per-GPU `flock`, so you can safely choose which GPU to occupy.
 - LoRA checkpoints are written to `/mnt/kai_ckp/model/Assignment2_ca6114/<workspace>/`, not `runtime/workspace/checkpoints/`.
 - `train_lora.sh` publishes the latest trained LoRA as `runtime/shared/models/loras/<workspace>_latest.safetensors`.

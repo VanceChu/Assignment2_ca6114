@@ -35,6 +35,15 @@ assignment2_ca6114:
 EOF
 }
 
+install_comfyui_example_workflow() {
+  mkdir -p "${COMFYUI_TEMPLATE_WORKFLOWS_ROOT}"
+  cat > "${COMFYUI_TEMPLATE_NODE_ROOT}/__init__.py" <<'EOF'
+"""Assignment2 ComfyUI workflow templates."""
+EOF
+  cp "${INFRA_ROOT}/workflows/sdxl_style_lora_inference.json" \
+    "${COMFYUI_TEMPLATE_WORKFLOWS_ROOT}/sdxl_style_lora_inference.json"
+}
+
 clone_if_missing https://github.com/kohya-ss/sd-scripts "${SDSCRIPTS_ROOT}"
 create_venv_if_missing "${SDSCRIPTS_VENV}"
 
@@ -56,6 +65,7 @@ if [[ "${INSTALL_COMFYUI}" == "1" ]]; then
     env PIP_INDEX_URL="${PIP_INDEX_URL}" "${COMFYUI_PYTHON}" -m pip install -r requirements.txt
   )
   write_comfyui_model_paths
+  install_comfyui_example_workflow
 fi
 
 printf 'runtime_root=%s
