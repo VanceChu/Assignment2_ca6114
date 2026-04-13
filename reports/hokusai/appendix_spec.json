@@ -1,0 +1,71 @@
+{
+  "image_base": "runtime/shared/comfyui/output",
+  "output_dir": "reports/hokusai/appendix",
+  "pairs": [
+    {
+      "baseline": "validation/hokusai/simple/r020_baseline_seed303_hokusai_style_a_coffee_cup_on_a_wooden_t_00001_.png",
+      "lora": "validation/hokusai/simple/r023_w1p0_seed303_hokusai_style_a_coffee_cup_on_a_wooden_t_00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b01_simple_coffeecup_pair.png"
+    },
+    {
+      "baseline": "validation/hokusai/simple/r000_baseline_seed101_hokusai_style_a_portrait_of_a_woman_near_00001_.png",
+      "lora": "validation/hokusai/simple/r003_w1p0_seed101_hokusai_style_a_portrait_of_a_woman_near_00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b02_simple_portrait_pair.png"
+    },
+    {
+      "baseline": "validation/hokusai/medium/r024_baseline_seed101_hokusai_style_a_fashion_editorial_portra_00001_.png",
+      "lora": "validation/hokusai/medium/r027_w1p0_seed101_hokusai_style_a_fashion_editorial_portra_00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b03_medium_fashion_pair.png"
+    },
+    {
+      "baseline": "validation/hokusai/medium/r040_baseline_seed202_hokusai_style_a_bookstore_interior_warm__00001_.png",
+      "lora": "validation/hokusai/medium/r043_w1p0_seed202_hokusai_style_a_bookstore_interior_warm__00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b04_medium_bookstore_pair.png"
+    },
+    {
+      "baseline": "validation/hokusai/complex/r052_baseline_seed202_hokusai_style_a_rainy_neon_street_market_00001_.png",
+      "lora": "validation/hokusai/complex/r055_w1p0_seed202_hokusai_style_a_rainy_neon_street_market_00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b05_complex_neonstreet_pair.png"
+    },
+    {
+      "baseline": "validation/hokusai/complex/r060_baseline_seed101_hokusai_style_a_surreal_museum_hall_with_00001_.png",
+      "lora": "validation/hokusai/complex/r063_w1p0_seed101_hokusai_style_a_surreal_museum_hall_with_00001_.png",
+      "left_label": "Baseline",
+      "right_label": "LoRA w=1.0",
+      "weight": "1.0",
+      "output": "fig_b06_complex_museum_pair.png"
+    }
+  ],
+  "failures": [
+    {
+      "image": "validation/hokusai/medium/r035_w1p0_seed303_hokusai_style_a_fashion_editorial_portra_00001_.png",
+      "label": "Failure: Fashion seed303 w=1.0 — photography semantics dominate",
+      "output": "fig_b07_failure_fashion_seed303.png"
+    },
+    {
+      "image": "validation/hokusai/complex/r059_w1p0_seed303_hokusai_style_a_rainy_neon_street_market_00001_.png",
+      "label": "Failure: Neon Street seed303 w=1.0 — neon palette overwhelms indigo",
+      "output": "fig_b08_failure_neonstreet_seed303.png"
+    },
+    {
+      "image": "validation/hokusai/medium/r031_w1p0_seed202_hokusai_style_a_fashion_editorial_portra_00001_.png",
+      "label": "Failure: Fashion seed202 w=1.0 — flat planes absent, realistic shading persists",
+      "output": "fig_b09_failure_fashion_seed202.png"
+    }
+  ]
+}
