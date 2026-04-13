@@ -1,0 +1,120 @@
+workspace=vangogh
+gpu=0
+base_model=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+train_root=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/dataset_train
+log=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/logs/train_20260411_163550_gpu0.log
+2026-04-11 16:35:55 INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime/shared/tokenizers/opena                    
+                             i_clip-vit-large-patch14                           
+2026-04-11 16:35:56 INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime/shared/tokenizers/laion                    
+                             _CLIP-ViT-bigG-14-laion2B-39B-b                    
+                             160k                                               
+                    INFO     Using DreamBooth method.       train_network.py:513
+                    INFO     prepare images.                  train_util.py:2141
+                    INFO     get image size from name of      train_util.py:2016
+                             cache files                                        
+  0%|          | 0/30 [00:00<?, ?it/s]100%|██████████| 30/30 [00:00<00:00, 423667.07it/s]
+                    INFO     set image size from cache files: train_util.py:2046
+                             0/30                                               
+                    INFO     found directory                  train_util.py:2088
+                             /mnt/world_foundational_model/ka                   
+                             i/chuzhong/Assignment2_ca6114/ru                   
+                             ntime/workspace/dataset_train/10                   
+                             _<vangogh_style> contains 30                       
+                             image files                                        
+read caption:   0%|          | 0/30 [00:00<?, ?it/s]read caption: 100%|██████████| 30/30 [00:00<00:00, 7838.84it/s]
+                    INFO     300 train images with repeats.   train_util.py:2187
+                    INFO     0 reg images with repeats.       train_util.py:2191
+                    WARNING  no regularization images /       train_util.py:2196
+                             正則化画像が見つかりませんでした                   
+                    INFO     [Dataset 0]                      config_util.py:584
+                               batch_size: 1                                    
+                               resolution: (1024, 1024)                         
+                               skip_image_resolution: None                      
+                               resize_interpolation: None                       
+                               enable_bucket: False                             
+                                                                                
+                               [Subset 0 of Dataset 0]                          
+                                 image_dir:                                     
+                             "/mnt/world_foundational_model/k                   
+                             ai/chuzhong/Assignment2_ca6114/r                   
+                             untime/workspace/dataset_train/1                   
+                             0_<vangogh_style>"                                 
+                                 image_count: 30                                
+                                 num_repeats: 10                                
+                                 shuffle_caption: False                         
+                                 keep_tokens: 0                                 
+                                 caption_dropout_rate: 0.0                      
+                                 caption_dropout_every_n_epoc                   
+                             hs: 0                                              
+                                 caption_tag_dropout_rate:                      
+                             0.0                                                
+                                 caption_prefix: None                           
+                                 caption_suffix: None                           
+                                 color_aug: False                               
+                                 flip_aug: False                                
+                                 face_crop_aug_range: None                      
+                                 random_crop: False                             
+                                 token_warmup_min: 1,                           
+                                 token_warmup_step: 0,                          
+                                 alpha_mask: False                              
+                                 resize_interpolation: None                     
+                                 custom_attributes: {}                          
+                                 is_reg: False                                  
+                                 class_tokens:                                  
+                             <vangogh_style>                                    
+                                 caption_extension: .txt                        
+                                                                                
+                                                                                
+                    INFO     [Prepare dataset 0]              config_util.py:596
+                    INFO     loading image sizes.              train_util.py:995
+  0%|          | 0/30 [00:00<?, ?it/s]100%|██████████| 30/30 [00:00<00:00, 373.83it/s]
+                    INFO     prepare dataset                  train_util.py:1020
+                    INFO     preparing accelerator          train_network.py:576
+                    INFO     loading model for process 0/1 sdxl_train_util.py:32
+                    INFO     load StableDiffusion          sdxl_train_util.py:73
+                             checkpoint:                                        
+                             /mnt/kai_ckp/model/Assignment                      
+                             2_ca6114/sd_xl_base_1.0.safet                      
+                             ensors                                             
+                    INFO     building U-Net               sdxl_model_util.py:198
+                    INFO     loading U-Net from           sdxl_model_util.py:202
+                             checkpoint                                         
+2026-04-11 16:35:59 INFO     U-Net: <All keys matched     sdxl_model_util.py:208
+                             successfully>                                      
+                    INFO     building text encoders       sdxl_model_util.py:211
+                    INFO     loading text encoders from   sdxl_model_util.py:264
+                             checkpoint                                         
+                    INFO     text encoder 1: <All keys    sdxl_model_util.py:278
+                             matched successfully>                              
+2026-04-11 16:36:01 INFO     text encoder 2: <All keys    sdxl_model_util.py:282
+                             matched successfully>                              
+                    INFO     building VAE                 sdxl_model_util.py:285
+                    INFO     loading VAE from checkpoint  sdxl_model_util.py:290
+                    INFO     VAE: <All keys matched       sdxl_model_util.py:293
+                             successfully>                                      
+                    INFO     Enable xformers for U-Net        train_util.py:3423
+accelerator device: cuda
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/train_util.py", line 3425, in replace_unet_modules
+    import xformers.ops
+ModuleNotFoundError: No module named 'xformers'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 234, in <module>
+    trainer.train(args)
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/train_network.py", line 585, in train
+    model_version, text_encoder, vae, unet = self.load_target_model(args, weight_dtype, accelerator)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 63, in load_target_model
+    train_util.replace_unet_modules(unet, args.mem_eff_attn, args.xformers, args.sdpa)
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/train_util.py", line 3427, in replace_unet_modules
+    raise ImportError("No xformers / xformersがインストールされていないようです")
+ImportError: No xformers / xformersがインストールされていないようです

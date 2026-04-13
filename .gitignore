@@ -1,6 +1,14 @@
 .worktrees/
 runtime/
 __pycache__/
+.DS_Store
+reports.zip
+报告checklist.md
+
+runtime_hokusai/shared
+runtime_hokusai/venvs
+runtime_hokusai/workspace/dataset_train/
+runtime_hokusai/workspace/logs/full_train_launch_*.log
 
 !runtime/workspace/
 runtime/workspace/*
@@ -8,6 +16,7 @@ runtime/workspace/*
 !runtime/workspace/dataset_curated/
 !runtime/workspace/captions/
 !runtime/workspace/configs/
+!runtime/workspace/logs/
 !runtime/workspace/report_assets/
 
 runtime/workspace/dataset_raw/*
@@ -21,6 +30,9 @@ runtime/workspace/captions/*
 
 runtime/workspace/configs/*
 !runtime/workspace/configs/sdxl_style_lora.env
+
+runtime/workspace/logs/*
+!runtime/workspace/logs/train_*_gpu0.log
 
 runtime/workspace/report_assets/*
 !runtime/workspace/report_assets/van_gogh_sources.csv

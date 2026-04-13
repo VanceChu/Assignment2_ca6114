@@ -1,0 +1,172 @@
+workspace=hokusai
+gpu=0
+base_model=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+train_root=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime_hokusai/workspace/dataset_train
+log=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime_hokusai/workspace/logs/train_20260412_172026_gpu0.log
+attention_backend=--sdpa
+2026-04-12 17:20:39 INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime_hokusai/shared/tokenize                    
+                             rs/openai_clip-vit-large-patch1                    
+                             4                                                  
+                    INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime_hokusai/shared/tokenize                    
+                             rs/laion_CLIP-ViT-bigG-14-laion                    
+                             2B-39B-b160k                                       
+                    INFO     Using DreamBooth method.       train_network.py:513
+                    INFO     prepare images.                  train_util.py:2141
+                    INFO     get image size from name of      train_util.py:2016
+                             cache files                                        
+  0%|          | 0/24 [00:00<?, ?it/s]100%|██████████| 24/24 [00:00<00:00, 349525.33it/s]
+                    INFO     set image size from cache files: train_util.py:2046
+                             0/24                                               
+                    INFO     found directory                  train_util.py:2088
+                             /mnt/world_foundational_model/ka                   
+                             i/chuzhong/Assignment2_ca6114/ru                   
+                             ntime_hokusai/workspace/dataset_                   
+                             train/10_<hokusai_style>                           
+                             contains 24 image files                            
+read caption:   0%|          | 0/24 [00:00<?, ?it/s]read caption: 100%|██████████| 24/24 [00:00<00:00, 4830.99it/s]
+                    INFO     240 train images with repeats.   train_util.py:2187
+                    INFO     0 reg images with repeats.       train_util.py:2191
+                    WARNING  no regularization images /       train_util.py:2196
+                             正則化画像が見つかりませんでした                   
+                    INFO     [Dataset 0]                      config_util.py:584
+                               batch_size: 1                                    
+                               resolution: (1024, 1024)                         
+                               skip_image_resolution: None                      
+                               resize_interpolation: None                       
+                               enable_bucket: False                             
+                                                                                
+                               [Subset 0 of Dataset 0]                          
+                                 image_dir:                                     
+                             "/mnt/world_foundational_model/k                   
+                             ai/chuzhong/Assignment2_ca6114/r                   
+                             untime_hokusai/workspace/dataset                   
+                             _train/10_<hokusai_style>"                         
+                                 image_count: 24                                
+                                 num_repeats: 10                                
+                                 shuffle_caption: False                         
+                                 keep_tokens: 0                                 
+                                 caption_dropout_rate: 0.0                      
+                                 caption_dropout_every_n_epoc                   
+                             hs: 0                                              
+                                 caption_tag_dropout_rate:                      
+                             0.0                                                
+                                 caption_prefix: None                           
+                                 caption_suffix: None                           
+                                 color_aug: False                               
+                                 flip_aug: False                                
+                                 face_crop_aug_range: None                      
+                                 random_crop: False                             
+                                 token_warmup_min: 1,                           
+                                 token_warmup_step: 0,                          
+                                 alpha_mask: False                              
+                                 resize_interpolation: None                     
+                                 custom_attributes: {}                          
+                                 is_reg: False                                  
+                                 class_tokens:                                  
+                             <hokusai_style>                                    
+                                 caption_extension: .txt                        
+                                                                                
+                                                                                
+                    INFO     [Prepare dataset 0]              config_util.py:596
+                    INFO     loading image sizes.              train_util.py:995
+  0%|          | 0/24 [00:00<?, ?it/s]100%|██████████| 24/24 [00:00<00:00, 827.08it/s]
+                    INFO     prepare dataset                  train_util.py:1020
+                    INFO     preparing accelerator          train_network.py:576
+                    INFO     loading model for process 0/1 sdxl_train_util.py:32
+                    INFO     load StableDiffusion          sdxl_train_util.py:73
+                             checkpoint:                                        
+                             /mnt/kai_ckp/model/Assignment                      
+                             2_ca6114/sd_xl_base_1.0.safet                      
+                             ensors                                             
+2026-04-12 17:20:41 INFO     building U-Net               sdxl_model_util.py:198
+                    INFO     loading U-Net from           sdxl_model_util.py:202
+                             checkpoint                                         
+2026-04-12 17:20:57 INFO     U-Net: <All keys matched     sdxl_model_util.py:208
+                             successfully>                                      
+                    INFO     building text encoders       sdxl_model_util.py:211
+                    INFO     loading text encoders from   sdxl_model_util.py:264
+                             checkpoint                                         
+2026-04-12 17:20:58 INFO     text encoder 1: <All keys    sdxl_model_util.py:278
+                             matched successfully>                              
+2026-04-12 17:21:03 INFO     text encoder 2: <All keys    sdxl_model_util.py:282
+                             matched successfully>                              
+                    INFO     building VAE                 sdxl_model_util.py:285
+                    INFO     loading VAE from checkpoint  sdxl_model_util.py:290
+2026-04-12 17:21:04 INFO     VAE: <All keys matched       sdxl_model_util.py:293
+                             successfully>                                      
+                    INFO     Enable SDPA for U-Net            train_util.py:3431
+                    INFO     [Dataset 0]                      train_util.py:2683
+                    INFO     caching latents with caching     train_util.py:1124
+                             strategy.                                          
+                    INFO     caching latents...               train_util.py:1174
+accelerator device: cuda
+  0%|          | 0/24 [00:00<?, ?it/s]  4%|▍         | 1/24 [00:01<00:27,  1.19s/it]  8%|▊         | 2/24 [00:01<00:15,  1.38it/s] 12%|█▎        | 3/24 [00:01<00:11,  1.76it/s] 17%|█▋        | 4/24 [00:02<00:09,  2.09it/s] 21%|██        | 5/24 [00:02<00:08,  2.26it/s] 25%|██▌       | 6/24 [00:02<00:06,  2.59it/s] 29%|██▉       | 7/24 [00:03<00:06,  2.66it/s] 33%|███▎      | 8/24 [00:03<00:05,  2.68it/s] 38%|███▊      | 9/24 [00:04<00:05,  2.69it/s] 42%|████▏     | 10/24 [00:04<00:05,  2.69it/s] 46%|████▌     | 11/24 [00:04<00:04,  2.69it/s] 50%|█████     | 12/24 [00:05<00:04,  2.71it/s] 54%|█████▍    | 13/24 [00:05<00:04,  2.71it/s] 58%|█████▊    | 14/24 [00:05<00:03,  2.59it/s] 62%|██████▎   | 15/24 [00:06<00:03,  2.87it/s] 67%|██████▋   | 16/24 [00:06<00:02,  2.95it/s] 71%|███████   | 17/24 [00:06<00:02,  3.21it/s] 75%|███████▌  | 18/24 [00:07<00:01,  3.28it/s] 79%|███████▉  | 19/24 [00:07<00:01,  3.02it/s] 83%|████████▎ | 20/24 [00:07<00:01,  2.93it/s] 88%|████████▊ | 21/24 [00:08<00:00,  3.21it/s] 92%|█████████▏| 22/24 [00:08<00:00,  3.01it/s] 96%|█████████▌| 23/24 [00:08<00:00,  2.98it/s]100%|██████████| 24/24 [00:09<00:00,  2.91it/s]100%|██████████| 24/24 [00:09<00:00,  2.62it/s]
+2026-04-12 17:21:15 INFO     create LoRA network. base dim (rank):   lora.py:935
+                             16, alpha: 16.0                                    
+                    INFO     neuron dropout: p=None, rank dropout:   lora.py:936
+                             p=None, module dropout: p=None                     
+                    INFO     create LoRA for Text Encoder 1:        lora.py:1027
+                    INFO     create LoRA for Text Encoder 2:        lora.py:1027
+2026-04-12 17:21:16 INFO     create LoRA for Text Encoder: 264      lora.py:1035
+                             modules.                                           
+2026-04-12 17:21:17 INFO     create LoRA for U-Net: 722 modules.    lora.py:1043
+                    INFO     enable LoRA for text encoder: 264      lora.py:1084
+                             modules                                            
+                    INFO     enable LoRA for U-Net: 722 modules     lora.py:1089
+                    INFO     use 8-bit AdamW optimizer | {}   train_util.py:4960
+2026-04-12 17:21:30 INFO     unet dtype: torch.bfloat16,   train_network.py:1332
+                             device: cuda:0                                     
+                    INFO     text_encoder [0] dtype:       train_network.py:1338
+                             torch.bfloat16, device:                            
+                             cuda:0                                             
+                    INFO     text_encoder [1] dtype:       train_network.py:1338
+                             torch.bfloat16, device:                            
+                             cuda:0                                             
+import network module: networks.lora
+prepare optimizer, data loader etc.
+running training / 学習開始
+  num train images * repeats / 学習画像の数×繰り返し回数: 240
+  num validation images * repeats / 学習画像の数×繰り返し回数: 0
+  num reg images / 正則化画像の数: 0
+  num batches per epoch / 1epochのバッチ数: 240
+  num epochs / epoch数: 1
+  batch size per device / バッチサイズ: 1
+  gradient accumulation steps / 勾配を合計するステップ数 = 1
+  total optimization steps / 学習ステップ数: 100
+steps:   0%|          | 0/100 [00:00<?, ?it/s]
+epoch 1/1
+
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-12 17:21:33 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+steps:   1%|          | 1/100 [00:04<08:10,  4.96s/it]steps:   1%|          | 1/100 [00:04<08:11,  4.96s/it, avr_loss=0.131]steps:   2%|▏         | 2/100 [00:06<04:56,  3.02s/it, avr_loss=0.131]steps:   2%|▏         | 2/100 [00:06<04:56,  3.02s/it, avr_loss=0.178]steps:   3%|▎         | 3/100 [00:07<03:49,  2.36s/it, avr_loss=0.178]steps:   3%|▎         | 3/100 [00:07<03:49,  2.36s/it, avr_loss=0.172]steps:   4%|▍         | 4/100 [00:08<03:15,  2.04s/it, avr_loss=0.172]steps:   4%|▍         | 4/100 [00:08<03:15,  2.04s/it, avr_loss=0.198]steps:   5%|▌         | 5/100 [00:09<02:54,  1.84s/it, avr_loss=0.198]steps:   5%|▌         | 5/100 [00:09<02:54,  1.84s/it, avr_loss=0.172]steps:   6%|▌         | 6/100 [00:10<02:40,  1.71s/it, avr_loss=0.172]steps:   6%|▌         | 6/100 [00:10<02:40,  1.71s/it, avr_loss=0.167]steps:   7%|▋         | 7/100 [00:11<02:30,  1.61s/it, avr_loss=0.167]steps:   7%|▋         | 7/100 [00:11<02:30,  1.61s/it, avr_loss=0.189]steps:   8%|▊         | 8/100 [00:12<02:22,  1.55s/it, avr_loss=0.189]steps:   8%|▊         | 8/100 [00:12<02:22,  1.55s/it, avr_loss=0.176]steps:   9%|▉         | 9/100 [00:13<02:16,  1.50s/it, avr_loss=0.176]steps:   9%|▉         | 9/100 [00:13<02:16,  1.50s/it, avr_loss=0.172]steps:  10%|█         | 10/100 [00:14<02:10,  1.45s/it, avr_loss=0.172]steps:  10%|█         | 10/100 [00:14<02:10,  1.45s/it, avr_loss=0.156]steps:  11%|█         | 11/100 [00:15<02:05,  1.41s/it, avr_loss=0.156]steps:  11%|█         | 11/100 [00:15<02:05,  1.41s/it, avr_loss=0.157]steps:  12%|█▏        | 12/100 [00:16<02:01,  1.38s/it, avr_loss=0.157]steps:  12%|█▏        | 12/100 [00:16<02:01,  1.38s/it, avr_loss=0.169]steps:  13%|█▎        | 13/100 [00:17<01:57,  1.35s/it, avr_loss=0.169]steps:  13%|█▎        | 13/100 [00:17<01:57,  1.35s/it, avr_loss=0.165]steps:  14%|█▍        | 14/100 [00:18<01:54,  1.33s/it, avr_loss=0.165]steps:  14%|█▍        | 14/100 [00:18<01:54,  1.33s/it, avr_loss=0.173]steps:  15%|█▌        | 15/100 [00:19<01:51,  1.31s/it, avr_loss=0.173]steps:  15%|█▌        | 15/100 [00:19<01:51,  1.31s/it, avr_loss=0.164]steps:  16%|█▌        | 16/100 [00:20<01:48,  1.30s/it, avr_loss=0.164]steps:  16%|█▌        | 16/100 [00:20<01:48,  1.30s/it, avr_loss=0.154]steps:  17%|█▋        | 17/100 [00:21<01:46,  1.28s/it, avr_loss=0.154]steps:  17%|█▋        | 17/100 [00:21<01:46,  1.28s/it, avr_loss=0.146]steps:  18%|█▊        | 18/100 [00:22<01:44,  1.27s/it, avr_loss=0.146]steps:  18%|█▊        | 18/100 [00:22<01:44,  1.27s/it, avr_loss=0.14] steps:  19%|█▉        | 19/100 [00:23<01:41,  1.26s/it, avr_loss=0.14]steps:  19%|█▉        | 19/100 [00:23<01:41,  1.26s/it, avr_loss=0.133]steps:  20%|██        | 20/100 [00:24<01:39,  1.25s/it, avr_loss=0.133]steps:  20%|██        | 20/100 [00:24<01:39,  1.25s/it, avr_loss=0.141]steps:  21%|██        | 21/100 [00:26<01:37,  1.24s/it, avr_loss=0.141]steps:  21%|██        | 21/100 [00:26<01:37,  1.24s/it, avr_loss=0.148]steps:  22%|██▏       | 22/100 [00:27<01:36,  1.23s/it, avr_loss=0.148]steps:  22%|██▏       | 22/100 [00:27<01:36,  1.23s/it, avr_loss=0.142]steps:  23%|██▎       | 23/100 [00:28<01:34,  1.22s/it, avr_loss=0.142]steps:  23%|██▎       | 23/100 [00:28<01:34,  1.22s/it, avr_loss=0.137]steps:  24%|██▍       | 24/100 [00:29<01:32,  1.22s/it, avr_loss=0.137]steps:  24%|██▍       | 24/100 [00:29<01:32,  1.22s/it, avr_loss=0.133]steps:  25%|██▌       | 25/100 [00:30<01:30,  1.21s/it, avr_loss=0.133]steps:  25%|██▌       | 25/100 [00:30<01:30,  1.21s/it, avr_loss=0.129]steps:  26%|██▌       | 26/100 [00:31<01:29,  1.20s/it, avr_loss=0.129]steps:  26%|██▌       | 26/100 [00:31<01:29,  1.20s/it, avr_loss=0.133]steps:  27%|██▋       | 27/100 [00:32<01:27,  1.20s/it, avr_loss=0.133]steps:  27%|██▋       | 27/100 [00:32<01:27,  1.20s/it, avr_loss=0.129]steps:  28%|██▊       | 28/100 [00:33<01:26,  1.20s/it, avr_loss=0.129]steps:  28%|██▊       | 28/100 [00:33<01:26,  1.20s/it, avr_loss=0.136]steps:  29%|██▉       | 29/100 [00:34<01:24,  1.19s/it, avr_loss=0.136]steps:  29%|██▉       | 29/100 [00:34<01:24,  1.19s/it, avr_loss=0.143]steps:  30%|███       | 30/100 [00:35<01:23,  1.19s/it, avr_loss=0.143]steps:  30%|███       | 30/100 [00:35<01:23,  1.19s/it, avr_loss=0.154]steps:  31%|███       | 31/100 [00:36<01:21,  1.18s/it, avr_loss=0.154]steps:  31%|███       | 31/100 [00:36<01:21,  1.18s/it, avr_loss=0.159]steps:  32%|███▏      | 32/100 [00:37<01:20,  1.18s/it, avr_loss=0.159]steps:  32%|███▏      | 32/100 [00:37<01:20,  1.18s/it, avr_loss=0.154]steps:  33%|███▎      | 33/100 [00:38<01:18,  1.18s/it, avr_loss=0.154]steps:  33%|███▎      | 33/100 [00:38<01:18,  1.18s/it, avr_loss=0.152]steps:  34%|███▍      | 34/100 [00:39<01:17,  1.17s/it, avr_loss=0.152]steps:  34%|███▍      | 34/100 [00:39<01:17,  1.17s/it, avr_loss=0.157]steps:  35%|███▌      | 35/100 [00:40<01:15,  1.17s/it, avr_loss=0.157]steps:  35%|███▌      | 35/100 [00:40<01:15,  1.17s/it, avr_loss=0.152]steps:  36%|███▌      | 36/100 [00:41<01:14,  1.17s/it, avr_loss=0.152]steps:  36%|███▌      | 36/100 [00:41<01:14,  1.17s/it, avr_loss=0.15] steps:  37%|███▋      | 37/100 [00:42<01:13,  1.16s/it, avr_loss=0.15]steps:  37%|███▋      | 37/100 [00:42<01:13,  1.16s/it, avr_loss=0.155]steps:  38%|███▊      | 38/100 [00:44<01:11,  1.16s/it, avr_loss=0.155]steps:  38%|███▊      | 38/100 [00:44<01:11,  1.16s/it, avr_loss=0.151]steps:  39%|███▉      | 39/100 [00:45<01:10,  1.16s/it, avr_loss=0.151]steps:  39%|███▉      | 39/100 [00:45<01:10,  1.16s/it, avr_loss=0.147]steps:  40%|████      | 40/100 [00:46<01:09,  1.15s/it, avr_loss=0.147]steps:  40%|████      | 40/100 [00:46<01:09,  1.15s/it, avr_loss=0.147]steps:  41%|████      | 41/100 [00:47<01:07,  1.15s/it, avr_loss=0.147]steps:  41%|████      | 41/100 [00:47<01:07,  1.15s/it, avr_loss=0.152]steps:  42%|████▏     | 42/100 [00:48<01:06,  1.15s/it, avr_loss=0.152]steps:  42%|████▏     | 42/100 [00:48<01:06,  1.15s/it, avr_loss=0.154]steps:  43%|████▎     | 43/100 [00:49<01:05,  1.15s/it, avr_loss=0.154]steps:  43%|████▎     | 43/100 [00:49<01:05,  1.15s/it, avr_loss=0.15] steps:  44%|████▍     | 44/100 [00:50<01:04,  1.14s/it, avr_loss=0.15]steps:  44%|████▍     | 44/100 [00:50<01:04,  1.14s/it, avr_loss=0.154]steps:  45%|████▌     | 45/100 [00:51<01:02,  1.14s/it, avr_loss=0.154]steps:  45%|████▌     | 45/100 [00:51<01:02,  1.14s/it, avr_loss=0.157]steps:  46%|████▌     | 46/100 [00:52<01:01,  1.14s/it, avr_loss=0.157]steps:  46%|████▌     | 46/100 [00:52<01:01,  1.14s/it, avr_loss=0.159]steps:  47%|████▋     | 47/100 [00:53<01:00,  1.14s/it, avr_loss=0.159]steps:  47%|████▋     | 47/100 [00:53<01:00,  1.14s/it, avr_loss=0.156]steps:  48%|████▊     | 48/100 [00:54<00:59,  1.14s/it, avr_loss=0.156]steps:  48%|████▊     | 48/100 [00:54<00:59,  1.14s/it, avr_loss=0.159]steps:  49%|████▉     | 49/100 [00:55<00:58,  1.14s/it, avr_loss=0.159]steps:  49%|████▉     | 49/100 [00:55<00:58,  1.14s/it, avr_loss=0.162]steps:  50%|█████     | 50/100 [00:56<00:56,  1.14s/it, avr_loss=0.162]steps:  50%|█████     | 50/100 [00:59<00:59,  1.18s/it, avr_loss=0.159]steps:  51%|█████     | 51/100 [01:00<00:57,  1.18s/it, avr_loss=0.159]steps:  51%|█████     | 51/100 [01:00<00:57,  1.18s/it, avr_loss=0.157]steps:  52%|█████▏    | 52/100 [01:01<00:56,  1.18s/it, avr_loss=0.157]steps:  52%|█████▏    | 52/100 [01:01<00:56,  1.18s/it, avr_loss=0.157]steps:  53%|█████▎    | 53/100 [01:02<00:55,  1.17s/it, avr_loss=0.157]steps:  53%|█████▎    | 53/100 [01:02<00:55,  1.17s/it, avr_loss=0.159]steps:  54%|█████▍    | 54/100 [01:03<00:53,  1.17s/it, avr_loss=0.159]steps:  54%|█████▍    | 54/100 [01:03<00:53,  1.17s/it, avr_loss=0.158]steps:  55%|█████▌    | 55/100 [01:04<00:52,  1.17s/it, avr_loss=0.158]steps:  55%|█████▌    | 55/100 [01:04<00:52,  1.17s/it, avr_loss=0.155]steps:  56%|█████▌    | 56/100 [01:05<00:51,  1.17s/it, avr_loss=0.155]steps:  56%|█████▌    | 56/100 [01:05<00:51,  1.17s/it, avr_loss=0.156]steps:  57%|█████▋    | 57/100 [01:06<00:50,  1.16s/it, avr_loss=0.156]steps:  57%|█████▋    | 57/100 [01:06<00:50,  1.16s/it, avr_loss=0.159]steps:  58%|█████▊    | 58/100 [01:07<00:48,  1.16s/it, avr_loss=0.159]steps:  58%|█████▊    | 58/100 [01:07<00:48,  1.16s/it, avr_loss=0.156]steps:  59%|█████▉    | 59/100 [01:08<00:47,  1.16s/it, avr_loss=0.156]steps:  59%|█████▉    | 59/100 [01:08<00:47,  1.16s/it, avr_loss=0.155]steps:  60%|██████    | 60/100 [01:09<00:46,  1.16s/it, avr_loss=0.155]steps:  60%|██████    | 60/100 [01:09<00:46,  1.16s/it, avr_loss=0.152]steps:  61%|██████    | 61/100 [01:10<00:45,  1.16s/it, avr_loss=0.152]steps:  61%|██████    | 61/100 [01:10<00:45,  1.16s/it, avr_loss=0.154]steps:  62%|██████▏   | 62/100 [01:11<00:43,  1.15s/it, avr_loss=0.154]steps:  62%|██████▏   | 62/100 [01:11<00:43,  1.15s/it, avr_loss=0.156]steps:  63%|██████▎   | 63/100 [01:12<00:42,  1.15s/it, avr_loss=0.156]steps:  63%|██████▎   | 63/100 [01:12<00:42,  1.15s/it, avr_loss=0.155]steps:  64%|██████▍   | 64/100 [01:13<00:41,  1.15s/it, avr_loss=0.155]steps:  64%|██████▍   | 64/100 [01:13<00:41,  1.15s/it, avr_loss=0.155]steps:  65%|██████▌   | 65/100 [01:14<00:40,  1.15s/it, avr_loss=0.155]steps:  65%|██████▌   | 65/100 [01:14<00:40,  1.15s/it, avr_loss=0.153]steps:  66%|██████▌   | 66/100 [01:15<00:39,  1.15s/it, avr_loss=0.153]steps:  66%|██████▌   | 66/100 [01:15<00:39,  1.15s/it, avr_loss=0.152]steps:  67%|██████▋   | 67/100 [01:16<00:37,  1.15s/it, avr_loss=0.152]steps:  67%|██████▋   | 67/100 [01:16<00:37,  1.15s/it, avr_loss=0.15] steps:  68%|██████▊   | 68/100 [01:17<00:36,  1.15s/it, avr_loss=0.15]steps:  68%|██████▊   | 68/100 [01:17<00:36,  1.15s/it, avr_loss=0.148]steps:  69%|██████▉   | 69/100 [01:18<00:35,  1.14s/it, avr_loss=0.148]steps:  69%|██████▉   | 69/100 [01:18<00:35,  1.14s/it, avr_loss=0.147]steps:  70%|███████   | 70/100 [01:19<00:34,  1.14s/it, avr_loss=0.147]steps:  70%|███████   | 70/100 [01:19<00:34,  1.14s/it, avr_loss=0.147]steps:  71%|███████   | 71/100 [01:21<00:33,  1.14s/it, avr_loss=0.147]steps:  71%|███████   | 71/100 [01:21<00:33,  1.14s/it, avr_loss=0.145]steps:  72%|███████▏  | 72/100 [01:22<00:31,  1.14s/it, avr_loss=0.145]steps:  72%|███████▏  | 72/100 [01:22<00:31,  1.14s/it, avr_loss=0.148]steps:  73%|███████▎  | 73/100 [01:23<00:30,  1.14s/it, avr_loss=0.148]steps:  73%|███████▎  | 73/100 [01:23<00:30,  1.14s/it, avr_loss=0.148]steps:  74%|███████▍  | 74/100 [01:24<00:29,  1.14s/it, avr_loss=0.148]steps:  74%|███████▍  | 74/100 [01:24<00:29,  1.14s/it, avr_loss=0.15] steps:  75%|███████▌  | 75/100 [01:25<00:28,  1.14s/it, avr_loss=0.15]steps:  75%|███████▌  | 75/100 [01:25<00:28,  1.14s/it, avr_loss=0.152]steps:  76%|███████▌  | 76/100 [01:26<00:27,  1.13s/it, avr_loss=0.152]steps:  76%|███████▌  | 76/100 [01:26<00:27,  1.13s/it, avr_loss=0.151]steps:  77%|███████▋  | 77/100 [01:27<00:26,  1.13s/it, avr_loss=0.151]steps:  77%|███████▋  | 77/100 [01:27<00:26,  1.13s/it, avr_loss=0.15] steps:  78%|███████▊  | 78/100 [01:28<00:24,  1.13s/it, avr_loss=0.15]steps:  78%|███████▊  | 78/100 [01:28<00:24,  1.13s/it, avr_loss=0.148]steps:  79%|███████▉  | 79/100 [01:29<00:23,  1.13s/it, avr_loss=0.148]steps:  79%|███████▉  | 79/100 [01:29<00:23,  1.13s/it, avr_loss=0.147]steps:  80%|████████  | 80/100 [01:30<00:22,  1.13s/it, avr_loss=0.147]steps:  80%|████████  | 80/100 [01:30<00:22,  1.13s/it, avr_loss=0.145]steps:  81%|████████  | 81/100 [01:31<00:21,  1.13s/it, avr_loss=0.145]steps:  81%|████████  | 81/100 [01:31<00:21,  1.13s/it, avr_loss=0.147]steps:  82%|████████▏ | 82/100 [01:32<00:20,  1.13s/it, avr_loss=0.147]steps:  82%|████████▏ | 82/100 [01:32<00:20,  1.13s/it, avr_loss=0.146]steps:  83%|████████▎ | 83/100 [01:33<00:19,  1.13s/it, avr_loss=0.146]steps:  83%|████████▎ | 83/100 [01:33<00:19,  1.13s/it, avr_loss=0.144]steps:  84%|████████▍ | 84/100 [01:34<00:18,  1.13s/it, avr_loss=0.144]steps:  84%|████████▍ | 84/100 [01:34<00:18,  1.13s/it, avr_loss=0.145]steps:  85%|████████▌ | 85/100 [01:35<00:16,  1.13s/it, avr_loss=0.145]steps:  85%|████████▌ | 85/100 [01:35<00:16,  1.13s/it, avr_loss=0.146]steps:  86%|████████▌ | 86/100 [01:36<00:15,  1.13s/it, avr_loss=0.146]steps:  86%|████████▌ | 86/100 [01:36<00:15,  1.13s/it, avr_loss=0.148]steps:  87%|████████▋ | 87/100 [01:37<00:14,  1.13s/it, avr_loss=0.148]steps:  87%|████████▋ | 87/100 [01:37<00:14,  1.13s/it, avr_loss=0.147]steps:  88%|████████▊ | 88/100 [01:38<00:13,  1.12s/it, avr_loss=0.147]steps:  88%|████████▊ | 88/100 [01:38<00:13,  1.12s/it, avr_loss=0.148]steps:  89%|████████▉ | 89/100 [01:39<00:12,  1.12s/it, avr_loss=0.148]steps:  89%|████████▉ | 89/100 [01:39<00:12,  1.12s/it, avr_loss=0.147]steps:  90%|█████████ | 90/100 [01:41<00:11,  1.12s/it, avr_loss=0.147]steps:  90%|█████████ | 90/100 [01:41<00:11,  1.12s/it, avr_loss=0.149]steps:  91%|█████████ | 91/100 [01:42<00:10,  1.12s/it, avr_loss=0.149]steps:  91%|█████████ | 91/100 [01:42<00:10,  1.12s/it, avr_loss=0.148]steps:  92%|█████████▏| 92/100 [01:43<00:08,  1.12s/it, avr_loss=0.148]steps:  92%|█████████▏| 92/100 [01:43<00:08,  1.12s/it, avr_loss=0.149]steps:  93%|█████████▎| 93/100 [01:44<00:07,  1.12s/it, avr_loss=0.149]steps:  93%|█████████▎| 93/100 [01:44<00:07,  1.12s/it, avr_loss=0.147]steps:  94%|█████████▍| 94/100 [01:45<00:06,  1.12s/it, avr_loss=0.147]steps:  94%|█████████▍| 94/100 [01:45<00:06,  1.12s/it, avr_loss=0.146]steps:  95%|█████████▌| 95/100 [01:46<00:05,  1.12s/it, avr_loss=0.146]steps:  95%|█████████▌| 95/100 [01:46<00:05,  1.12s/it, avr_loss=0.147]steps:  96%|█████████▌| 96/100 [01:47<00:04,  1.12s/it, avr_loss=0.147]steps:  96%|█████████▌| 96/100 [01:47<00:04,  1.12s/it, avr_loss=0.149]steps:  97%|█████████▋| 97/100 [01:48<00:03,  1.12s/it, avr_loss=0.149]steps:  97%|█████████▋| 97/100 [01:48<00:03,  1.12s/it, avr_loss=0.15] steps:  98%|█████████▊| 98/100 [01:49<00:02,  1.12s/it, avr_loss=0.15]steps:  98%|█████████▊| 98/100 [01:49<00:02,  1.12s/it, avr_loss=0.149]steps:  99%|█████████▉| 99/100 [01:50<00:01,  1.12s/it, avr_loss=0.149]steps:  99%|█████████▉| 99/100 [01:50<00:01,  1.12s/it, avr_loss=0.147]steps: 100%|██████████| 100/100 [01:51<00:00,  1.11s/it, avr_loss=0.147]steps: 100%|██████████| 100/100 [01:52<00:00,  1.13s/it, avr_loss=0.146]2026-04-12 17:23:24 INFO     model saved.                  train_network.py:1714
+steps: 100%|██████████| 100/100 [01:52<00:00,  1.13s/it, avr_loss=0.146]
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/hokusai/hokusai_sdxl_style_lora-step00000050.safetensors
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/hokusai/hokusai_sdxl_style_lora-step00000100.safetensors
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/hokusai/hokusai_sdxl_style_lora.safetensors
+BASE_MODEL_NAME=sd_xl_base_1.0.safetensors
+BASE_MODEL_PATH=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+LORA_NAME=hokusai_latest.safetensors
+LORA_PATH=/mnt/kai_ckp/model/Assignment2_ca6114/hokusai/hokusai_sdxl_style_lora.safetensors

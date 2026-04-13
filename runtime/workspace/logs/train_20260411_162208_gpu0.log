@@ -1,0 +1,87 @@
+workspace=vangogh
+gpu=0
+base_model=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+train_root=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/dataset_train
+log=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/logs/train_20260411_162208_gpu0.log
+urllib3.exceptions.SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/clip-vit-large-patch14/resolve/main/tokenizer_config.json (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 234, in <module>
+    trainer.train(args)
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/train_network.py", line 490, in train
+    tokenize_strategy = self.get_tokenize_strategy(args)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 70, in get_tokenize_strategy
+    return strategy_sdxl.SdxlTokenizeStrategy(args.max_token_length, args.tokenizer_cache_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/strategy_sdxl.py", line 24, in __init__
+    self.tokenizer1 = self._load_tokenizer(CLIPTokenizer, TOKENIZER1_PATH, tokenizer_cache_dir=tokenizer_cache_dir)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/strategy_base.py", line 65, in _load_tokenizer
+    tokenizer = model_class.from_pretrained(model_id, subfolder=subfolder)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 1911, in from_pretrained
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/utils/hub.py", line 318, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/utils/hub.py", line 564, in cached_files
+    raise e
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/utils/hub.py", line 476, in cached_files
+    hf_hub_download(
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1073, in _hf_hub_download_to_cache_dir
+    (url_to_download, etag, commit_hash, expected_size, xet_file_data, head_call_error) = _get_metadata_or_catch_error(
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1546, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1463, in get_hf_file_metadata
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 286, in _request_wrapper
+    response = _request_wrapper(
+               ^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 309, in _request_wrapper
+    response = http_backoff(method=method, url=url, **params, retry_on_exceptions=(), retry_on_status_codes=(429,))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 310, in http_backoff
+    response = session.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/clip-vit-large-patch14/resolve/main/tokenizer_config.json (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)')))"), '(Request ID: 8d55e130-69cc-40b8-aba8-b1af4d72c082)')

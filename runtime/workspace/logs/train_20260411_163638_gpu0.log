@@ -1,0 +1,167 @@
+workspace=vangogh
+gpu=0
+base_model=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+train_root=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/dataset_train
+log=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/logs/train_20260411_163638_gpu0.log
+attention_backend=--sdpa
+2026-04-11 16:36:43 INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime/shared/tokenizers/opena                    
+                             i_clip-vit-large-patch14                           
+                    INFO     load tokenizer from cache:      strategy_base.py:61
+                             /mnt/world_foundational_model/k                    
+                             ai/chuzhong/Assignment2_ca6114/                    
+                             runtime/shared/tokenizers/laion                    
+                             _CLIP-ViT-bigG-14-laion2B-39B-b                    
+                             160k                                               
+                    INFO     Using DreamBooth method.       train_network.py:513
+                    INFO     prepare images.                  train_util.py:2141
+                    INFO     get image size from name of      train_util.py:2016
+                             cache files                                        
+  0%|          | 0/30 [00:00<?, ?it/s]100%|██████████| 30/30 [00:00<00:00, 399457.52it/s]
+2026-04-11 16:36:44 INFO     set image size from cache files: train_util.py:2046
+                             0/30                                               
+                    INFO     found directory                  train_util.py:2088
+                             /mnt/world_foundational_model/ka                   
+                             i/chuzhong/Assignment2_ca6114/ru                   
+                             ntime/workspace/dataset_train/10                   
+                             _<vangogh_style> contains 30                       
+                             image files                                        
+read caption:   0%|          | 0/30 [00:00<?, ?it/s]read caption: 100%|██████████| 30/30 [00:00<00:00, 27918.60it/s]
+                    INFO     300 train images with repeats.   train_util.py:2187
+                    INFO     0 reg images with repeats.       train_util.py:2191
+                    WARNING  no regularization images /       train_util.py:2196
+                             正則化画像が見つかりませんでした                   
+                    INFO     [Dataset 0]                      config_util.py:584
+                               batch_size: 1                                    
+                               resolution: (1024, 1024)                         
+                               skip_image_resolution: None                      
+                               resize_interpolation: None                       
+                               enable_bucket: False                             
+                                                                                
+                               [Subset 0 of Dataset 0]                          
+                                 image_dir:                                     
+                             "/mnt/world_foundational_model/k                   
+                             ai/chuzhong/Assignment2_ca6114/r                   
+                             untime/workspace/dataset_train/1                   
+                             0_<vangogh_style>"                                 
+                                 image_count: 30                                
+                                 num_repeats: 10                                
+                                 shuffle_caption: False                         
+                                 keep_tokens: 0                                 
+                                 caption_dropout_rate: 0.0                      
+                                 caption_dropout_every_n_epoc                   
+                             hs: 0                                              
+                                 caption_tag_dropout_rate:                      
+                             0.0                                                
+                                 caption_prefix: None                           
+                                 caption_suffix: None                           
+                                 color_aug: False                               
+                                 flip_aug: False                                
+                                 face_crop_aug_range: None                      
+                                 random_crop: False                             
+                                 token_warmup_min: 1,                           
+                                 token_warmup_step: 0,                          
+                                 alpha_mask: False                              
+                                 resize_interpolation: None                     
+                                 custom_attributes: {}                          
+                                 is_reg: False                                  
+                                 class_tokens:                                  
+                             <vangogh_style>                                    
+                                 caption_extension: .txt                        
+                                                                                
+                                                                                
+                    INFO     [Prepare dataset 0]              config_util.py:596
+                    INFO     loading image sizes.              train_util.py:995
+  0%|          | 0/30 [00:00<?, ?it/s]100%|██████████| 30/30 [00:00<00:00, 620.95it/s]
+                    INFO     prepare dataset                  train_util.py:1020
+                    INFO     preparing accelerator          train_network.py:576
+                    INFO     loading model for process 0/1 sdxl_train_util.py:32
+                    INFO     load StableDiffusion          sdxl_train_util.py:73
+                             checkpoint:                                        
+                             /mnt/kai_ckp/model/Assignment                      
+                             2_ca6114/sd_xl_base_1.0.safet                      
+                             ensors                                             
+                    INFO     building U-Net               sdxl_model_util.py:198
+                    INFO     loading U-Net from           sdxl_model_util.py:202
+                             checkpoint                                         
+2026-04-11 16:36:47 INFO     U-Net: <All keys matched     sdxl_model_util.py:208
+                             successfully>                                      
+                    INFO     building text encoders       sdxl_model_util.py:211
+                    INFO     loading text encoders from   sdxl_model_util.py:264
+                             checkpoint                                         
+                    INFO     text encoder 1: <All keys    sdxl_model_util.py:278
+                             matched successfully>                              
+2026-04-11 16:36:48 INFO     text encoder 2: <All keys    sdxl_model_util.py:282
+                             matched successfully>                              
+                    INFO     building VAE                 sdxl_model_util.py:285
+                    INFO     loading VAE from checkpoint  sdxl_model_util.py:290
+                    INFO     VAE: <All keys matched       sdxl_model_util.py:293
+                             successfully>                                      
+                    INFO     Enable SDPA for U-Net            train_util.py:3431
+2026-04-11 16:36:49 INFO     [Dataset 0]                      train_util.py:2683
+                    INFO     caching latents with caching     train_util.py:1124
+                             strategy.                                          
+                    INFO     caching latents...               train_util.py:1174
+accelerator device: cuda
+  0%|          | 0/30 [00:00<?, ?it/s]  3%|▎         | 1/30 [00:01<00:36,  1.27s/it]  7%|▋         | 2/30 [00:01<00:19,  1.46it/s] 10%|█         | 3/30 [00:01<00:13,  2.02it/s] 13%|█▎        | 4/30 [00:02<00:10,  2.53it/s] 17%|█▋        | 5/30 [00:02<00:08,  2.89it/s] 20%|██        | 6/30 [00:02<00:07,  3.03it/s] 23%|██▎       | 7/30 [00:02<00:07,  3.28it/s] 27%|██▋       | 8/30 [00:03<00:06,  3.46it/s] 30%|███       | 9/30 [00:03<00:05,  3.57it/s] 33%|███▎      | 10/30 [00:03<00:05,  3.59it/s] 37%|███▋      | 11/30 [00:03<00:05,  3.67it/s] 40%|████      | 12/30 [00:04<00:04,  3.80it/s] 43%|████▎     | 13/30 [00:04<00:04,  3.76it/s] 47%|████▋     | 14/30 [00:04<00:04,  3.80it/s] 50%|█████     | 15/30 [00:04<00:03,  3.94it/s] 53%|█████▎    | 16/30 [00:05<00:03,  4.02it/s] 57%|█████▋    | 17/30 [00:05<00:03,  3.67it/s] 60%|██████    | 18/30 [00:05<00:03,  3.63it/s] 63%|██████▎   | 19/30 [00:06<00:02,  3.72it/s] 67%|██████▋   | 20/30 [00:06<00:02,  3.76it/s] 70%|███████   | 21/30 [00:06<00:02,  3.61it/s] 73%|███████▎  | 22/30 [00:06<00:02,  3.59it/s] 77%|███████▋  | 23/30 [00:07<00:01,  3.79it/s] 80%|████████  | 24/30 [00:07<00:01,  3.91it/s] 83%|████████▎ | 25/30 [00:07<00:01,  3.72it/s] 87%|████████▋ | 26/30 [00:07<00:01,  3.62it/s] 90%|█████████ | 27/30 [00:08<00:00,  3.70it/s] 93%|█████████▎| 28/30 [00:08<00:00,  3.81it/s] 97%|█████████▋| 29/30 [00:08<00:00,  3.83it/s]100%|██████████| 30/30 [00:08<00:00,  3.94it/s]100%|██████████| 30/30 [00:08<00:00,  3.36it/s]
+2026-04-11 16:36:59 INFO     create LoRA network. base dim (rank):   lora.py:935
+                             16, alpha: 16.0                                    
+                    INFO     neuron dropout: p=None, rank dropout:   lora.py:936
+                             p=None, module dropout: p=None                     
+                    INFO     create LoRA for Text Encoder 1:        lora.py:1027
+                    INFO     create LoRA for Text Encoder 2:        lora.py:1027
+                    INFO     create LoRA for Text Encoder: 264      lora.py:1035
+                             modules.                                           
+2026-04-11 16:37:01 INFO     create LoRA for U-Net: 722 modules.    lora.py:1043
+                    INFO     enable LoRA for text encoder: 264      lora.py:1084
+                             modules                                            
+                    INFO     enable LoRA for U-Net: 722 modules     lora.py:1089
+                    INFO     use 8-bit AdamW optimizer | {}   train_util.py:4960
+2026-04-11 16:37:15 INFO     unet dtype: torch.bfloat16,   train_network.py:1332
+                             device: cuda:0                                     
+                    INFO     text_encoder [0] dtype:       train_network.py:1338
+                             torch.bfloat16, device:                            
+                             cuda:0                                             
+                    INFO     text_encoder [1] dtype:       train_network.py:1338
+                             torch.bfloat16, device:                            
+                             cuda:0                                             
+import network module: networks.lora
+prepare optimizer, data loader etc.
+running training / 学習開始
+  num train images * repeats / 学習画像の数×繰り返し回数: 300
+  num validation images * repeats / 学習画像の数×繰り返し回数: 0
+  num reg images / 正則化画像の数: 0
+  num batches per epoch / 1epochのバッチ数: 300
+  num epochs / epoch数: 1
+  batch size per device / バッチサイズ: 1
+  gradient accumulation steps / 勾配を合計するステップ数 = 1
+  total optimization steps / 学習ステップ数: 100
+steps:   0%|          | 0/100 [00:00<?, ?it/s]
+epoch 1/1
+
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+2026-04-11 16:37:17 INFO     epoch is incremented.             train_util.py:787
+                             current_epoch: 0, epoch: 1                         
+steps:   1%|          | 1/100 [00:04<07:38,  4.64s/it]steps:   1%|          | 1/100 [00:04<07:39,  4.64s/it, avr_loss=0.301]steps:   2%|▏         | 2/100 [00:05<04:37,  2.83s/it, avr_loss=0.301]steps:   2%|▏         | 2/100 [00:05<04:37,  2.83s/it, avr_loss=0.153]steps:   3%|▎         | 3/100 [00:06<03:35,  2.22s/it, avr_loss=0.153]steps:   3%|▎         | 3/100 [00:06<03:35,  2.22s/it, avr_loss=0.108]steps:   4%|▍         | 4/100 [00:07<03:03,  1.92s/it, avr_loss=0.108]steps:   4%|▍         | 4/100 [00:07<03:03,  1.92s/it, avr_loss=0.175]steps:   5%|▌         | 5/100 [00:08<02:44,  1.73s/it, avr_loss=0.175]steps:   5%|▌         | 5/100 [00:08<02:44,  1.73s/it, avr_loss=0.142]steps:   6%|▌         | 6/100 [00:09<02:31,  1.61s/it, avr_loss=0.142]steps:   6%|▌         | 6/100 [00:09<02:31,  1.61s/it, avr_loss=0.128]steps:   7%|▋         | 7/100 [00:10<02:21,  1.52s/it, avr_loss=0.128]steps:   7%|▋         | 7/100 [00:10<02:21,  1.52s/it, avr_loss=0.128]steps:   8%|▊         | 8/100 [00:11<02:14,  1.46s/it, avr_loss=0.128]steps:   8%|▊         | 8/100 [00:11<02:14,  1.46s/it, avr_loss=0.134]steps:   9%|▉         | 9/100 [00:12<02:08,  1.41s/it, avr_loss=0.134]steps:   9%|▉         | 9/100 [00:12<02:08,  1.41s/it, avr_loss=0.121]steps:  10%|█         | 10/100 [00:13<02:03,  1.37s/it, avr_loss=0.121]steps:  10%|█         | 10/100 [00:13<02:03,  1.37s/it, avr_loss=0.115]steps:  11%|█         | 11/100 [00:14<01:58,  1.34s/it, avr_loss=0.115]steps:  11%|█         | 11/100 [00:14<01:58,  1.34s/it, avr_loss=0.106]steps:  12%|█▏        | 12/100 [00:15<01:55,  1.31s/it, avr_loss=0.106]steps:  12%|█▏        | 12/100 [00:15<01:55,  1.31s/it, avr_loss=0.112]steps:  13%|█▎        | 13/100 [00:16<01:51,  1.29s/it, avr_loss=0.112]steps:  13%|█▎        | 13/100 [00:16<01:51,  1.29s/it, avr_loss=0.105]steps:  14%|█▍        | 14/100 [00:17<01:49,  1.27s/it, avr_loss=0.105]steps:  14%|█▍        | 14/100 [00:17<01:49,  1.27s/it, avr_loss=0.0992]steps:  15%|█▌        | 15/100 [00:18<01:46,  1.25s/it, avr_loss=0.0992]steps:  15%|█▌        | 15/100 [00:18<01:46,  1.25s/it, avr_loss=0.0934]steps:  16%|█▌        | 16/100 [00:19<01:43,  1.24s/it, avr_loss=0.0934]steps:  16%|█▌        | 16/100 [00:19<01:43,  1.24s/it, avr_loss=0.0965]steps:  17%|█▋        | 17/100 [00:20<01:41,  1.23s/it, avr_loss=0.0965]steps:  17%|█▋        | 17/100 [00:20<01:41,  1.23s/it, avr_loss=0.0922]steps:  18%|█▊        | 18/100 [00:21<01:39,  1.21s/it, avr_loss=0.0922]steps:  18%|█▊        | 18/100 [00:21<01:39,  1.21s/it, avr_loss=0.103] steps:  19%|█▉        | 19/100 [00:22<01:37,  1.20s/it, avr_loss=0.103]steps:  19%|█▉        | 19/100 [00:22<01:37,  1.20s/it, avr_loss=0.116]steps:  20%|██        | 20/100 [00:23<01:35,  1.20s/it, avr_loss=0.116]steps:  20%|██        | 20/100 [00:23<01:35,  1.20s/it, avr_loss=0.113]steps:  21%|██        | 21/100 [00:24<01:33,  1.19s/it, avr_loss=0.113]steps:  21%|██        | 21/100 [00:24<01:33,  1.19s/it, avr_loss=0.109]steps:  22%|██▏       | 22/100 [00:25<01:32,  1.18s/it, avr_loss=0.109]steps:  22%|██▏       | 22/100 [00:25<01:32,  1.18s/it, avr_loss=0.118]steps:  23%|██▎       | 23/100 [00:26<01:30,  1.17s/it, avr_loss=0.118]steps:  23%|██▎       | 23/100 [00:26<01:30,  1.17s/it, avr_loss=0.113]steps:  24%|██▍       | 24/100 [00:27<01:28,  1.17s/it, avr_loss=0.113]steps:  24%|██▍       | 24/100 [00:27<01:28,  1.17s/it, avr_loss=0.108]steps:  25%|██▌       | 25/100 [00:29<01:27,  1.16s/it, avr_loss=0.108]steps:  25%|██▌       | 25/100 [00:29<01:27,  1.16s/it, avr_loss=0.104]steps:  26%|██▌       | 26/100 [00:30<01:25,  1.16s/it, avr_loss=0.104]steps:  26%|██▌       | 26/100 [00:30<01:25,  1.16s/it, avr_loss=0.107]steps:  27%|██▋       | 27/100 [00:31<01:23,  1.15s/it, avr_loss=0.107]steps:  27%|██▋       | 27/100 [00:31<01:23,  1.15s/it, avr_loss=0.116]steps:  28%|██▊       | 28/100 [00:32<01:22,  1.14s/it, avr_loss=0.116]steps:  28%|██▊       | 28/100 [00:32<01:22,  1.14s/it, avr_loss=0.113]steps:  29%|██▉       | 29/100 [00:33<01:20,  1.14s/it, avr_loss=0.113]steps:  29%|██▉       | 29/100 [00:33<01:20,  1.14s/it, avr_loss=0.112]steps:  30%|███       | 30/100 [00:34<01:19,  1.14s/it, avr_loss=0.112]steps:  30%|███       | 30/100 [00:34<01:19,  1.14s/it, avr_loss=0.125]steps:  31%|███       | 31/100 [00:35<01:18,  1.13s/it, avr_loss=0.125]steps:  31%|███       | 31/100 [00:35<01:18,  1.13s/it, avr_loss=0.121]steps:  32%|███▏      | 32/100 [00:36<01:16,  1.13s/it, avr_loss=0.121]steps:  32%|███▏      | 32/100 [00:36<01:16,  1.13s/it, avr_loss=0.121]steps:  33%|███▎      | 33/100 [00:37<01:15,  1.13s/it, avr_loss=0.121]steps:  33%|███▎      | 33/100 [00:37<01:15,  1.13s/it, avr_loss=0.129]steps:  34%|███▍      | 34/100 [00:38<01:14,  1.12s/it, avr_loss=0.129]steps:  34%|███▍      | 34/100 [00:38<01:14,  1.12s/it, avr_loss=0.136]steps:  35%|███▌      | 35/100 [00:39<01:12,  1.12s/it, avr_loss=0.136]steps:  35%|███▌      | 35/100 [00:39<01:12,  1.12s/it, avr_loss=0.137]steps:  36%|███▌      | 36/100 [00:40<01:11,  1.12s/it, avr_loss=0.137]steps:  36%|███▌      | 36/100 [00:40<01:11,  1.12s/it, avr_loss=0.134]steps:  37%|███▋      | 37/100 [00:41<01:10,  1.11s/it, avr_loss=0.134]steps:  37%|███▋      | 37/100 [00:41<01:10,  1.11s/it, avr_loss=0.134]steps:  38%|███▊      | 38/100 [00:42<01:08,  1.11s/it, avr_loss=0.134]steps:  38%|███▊      | 38/100 [00:42<01:08,  1.11s/it, avr_loss=0.135]steps:  39%|███▉      | 39/100 [00:43<01:07,  1.11s/it, avr_loss=0.135]steps:  39%|███▉      | 39/100 [00:43<01:07,  1.11s/it, avr_loss=0.141]steps:  40%|████      | 40/100 [00:44<01:06,  1.11s/it, avr_loss=0.141]steps:  40%|████      | 40/100 [00:44<01:06,  1.11s/it, avr_loss=0.14] steps:  41%|████      | 41/100 [00:45<01:05,  1.10s/it, avr_loss=0.14]steps:  41%|████      | 41/100 [00:45<01:05,  1.10s/it, avr_loss=0.137]steps:  42%|████▏     | 42/100 [00:46<01:03,  1.10s/it, avr_loss=0.137]steps:  42%|████▏     | 42/100 [00:46<01:03,  1.10s/it, avr_loss=0.134]steps:  43%|████▎     | 43/100 [00:47<01:02,  1.10s/it, avr_loss=0.134]steps:  43%|████▎     | 43/100 [00:47<01:02,  1.10s/it, avr_loss=0.143]steps:  44%|████▍     | 44/100 [00:48<01:01,  1.10s/it, avr_loss=0.143]steps:  44%|████▍     | 44/100 [00:48<01:01,  1.10s/it, avr_loss=0.14] steps:  45%|████▌     | 45/100 [00:49<01:00,  1.10s/it, avr_loss=0.14]steps:  45%|████▌     | 45/100 [00:49<01:00,  1.10s/it, avr_loss=0.14]steps:  46%|████▌     | 46/100 [00:50<00:59,  1.09s/it, avr_loss=0.14]steps:  46%|████▌     | 46/100 [00:50<00:59,  1.09s/it, avr_loss=0.146]steps:  47%|████▋     | 47/100 [00:51<00:57,  1.09s/it, avr_loss=0.146]steps:  47%|████▋     | 47/100 [00:51<00:57,  1.09s/it, avr_loss=0.148]steps:  48%|████▊     | 48/100 [00:52<00:56,  1.09s/it, avr_loss=0.148]steps:  48%|████▊     | 48/100 [00:52<00:56,  1.09s/it, avr_loss=0.151]steps:  49%|████▉     | 49/100 [00:53<00:55,  1.09s/it, avr_loss=0.151]steps:  49%|████▉     | 49/100 [00:53<00:55,  1.09s/it, avr_loss=0.155]steps:  50%|█████     | 50/100 [00:54<00:54,  1.09s/it, avr_loss=0.155]steps:  50%|█████     | 50/100 [00:57<00:57,  1.14s/it, avr_loss=0.165]steps:  51%|█████     | 51/100 [00:58<00:55,  1.14s/it, avr_loss=0.165]steps:  51%|█████     | 51/100 [00:58<00:55,  1.14s/it, avr_loss=0.162]steps:  52%|█████▏    | 52/100 [00:59<00:54,  1.14s/it, avr_loss=0.162]steps:  52%|█████▏    | 52/100 [00:59<00:54,  1.14s/it, avr_loss=0.159]steps:  53%|█████▎    | 53/100 [01:00<00:53,  1.14s/it, avr_loss=0.159]steps:  53%|█████▎    | 53/100 [01:00<00:53,  1.14s/it, avr_loss=0.158]steps:  54%|█████▍    | 54/100 [01:01<00:52,  1.13s/it, avr_loss=0.158]steps:  54%|█████▍    | 54/100 [01:01<00:52,  1.13s/it, avr_loss=0.155]steps:  55%|█████▌    | 55/100 [01:02<00:50,  1.13s/it, avr_loss=0.155]steps:  55%|█████▌    | 55/100 [01:02<00:50,  1.13s/it, avr_loss=0.152]steps:  56%|█████▌    | 56/100 [01:03<00:49,  1.13s/it, avr_loss=0.152]steps:  56%|█████▌    | 56/100 [01:03<00:49,  1.13s/it, avr_loss=0.151]steps:  57%|█████▋    | 57/100 [01:04<00:48,  1.13s/it, avr_loss=0.151]steps:  57%|█████▋    | 57/100 [01:04<00:48,  1.13s/it, avr_loss=0.155]steps:  58%|█████▊    | 58/100 [01:05<00:47,  1.13s/it, avr_loss=0.155]steps:  58%|█████▊    | 58/100 [01:05<00:47,  1.13s/it, avr_loss=0.152]steps:  59%|█████▉    | 59/100 [01:06<00:46,  1.12s/it, avr_loss=0.152]steps:  59%|█████▉    | 59/100 [01:06<00:46,  1.12s/it, avr_loss=0.151]steps:  60%|██████    | 60/100 [01:07<00:44,  1.12s/it, avr_loss=0.151]steps:  60%|██████    | 60/100 [01:07<00:44,  1.12s/it, avr_loss=0.149]steps:  61%|██████    | 61/100 [01:08<00:43,  1.12s/it, avr_loss=0.149]steps:  61%|██████    | 61/100 [01:08<00:43,  1.12s/it, avr_loss=0.152]steps:  62%|██████▏   | 62/100 [01:09<00:42,  1.12s/it, avr_loss=0.152]steps:  62%|██████▏   | 62/100 [01:09<00:42,  1.12s/it, avr_loss=0.15] steps:  63%|██████▎   | 63/100 [01:10<00:41,  1.12s/it, avr_loss=0.15]steps:  63%|██████▎   | 63/100 [01:10<00:41,  1.12s/it, avr_loss=0.15]steps:  64%|██████▍   | 64/100 [01:11<00:40,  1.12s/it, avr_loss=0.15]steps:  64%|██████▍   | 64/100 [01:11<00:40,  1.12s/it, avr_loss=0.151]steps:  65%|██████▌   | 65/100 [01:12<00:39,  1.12s/it, avr_loss=0.151]steps:  65%|██████▌   | 65/100 [01:12<00:39,  1.12s/it, avr_loss=0.149]steps:  66%|██████▌   | 66/100 [01:13<00:37,  1.11s/it, avr_loss=0.149]steps:  66%|██████▌   | 66/100 [01:13<00:37,  1.11s/it, avr_loss=0.147]steps:  67%|██████▋   | 67/100 [01:14<00:36,  1.11s/it, avr_loss=0.147]steps:  67%|██████▋   | 67/100 [01:14<00:36,  1.11s/it, avr_loss=0.147]steps:  68%|██████▊   | 68/100 [01:15<00:35,  1.11s/it, avr_loss=0.147]steps:  68%|██████▊   | 68/100 [01:15<00:35,  1.11s/it, avr_loss=0.145]steps:  69%|██████▉   | 69/100 [01:16<00:34,  1.11s/it, avr_loss=0.145]steps:  69%|██████▉   | 69/100 [01:16<00:34,  1.11s/it, avr_loss=0.146]steps:  70%|███████   | 70/100 [01:17<00:33,  1.11s/it, avr_loss=0.146]steps:  70%|███████   | 70/100 [01:17<00:33,  1.11s/it, avr_loss=0.144]steps:  71%|███████   | 71/100 [01:18<00:32,  1.11s/it, avr_loss=0.144]steps:  71%|███████   | 71/100 [01:18<00:32,  1.11s/it, avr_loss=0.142]steps:  72%|███████▏  | 72/100 [01:19<00:30,  1.11s/it, avr_loss=0.142]steps:  72%|███████▏  | 72/100 [01:19<00:30,  1.11s/it, avr_loss=0.142]steps:  73%|███████▎  | 73/100 [01:20<00:29,  1.11s/it, avr_loss=0.142]steps:  73%|███████▎  | 73/100 [01:20<00:29,  1.11s/it, avr_loss=0.141]steps:  74%|███████▍  | 74/100 [01:21<00:28,  1.10s/it, avr_loss=0.141]steps:  74%|███████▍  | 74/100 [01:21<00:28,  1.10s/it, avr_loss=0.144]steps:  75%|███████▌  | 75/100 [01:22<00:27,  1.10s/it, avr_loss=0.144]steps:  75%|███████▌  | 75/100 [01:22<00:27,  1.10s/it, avr_loss=0.147]steps:  76%|███████▌  | 76/100 [01:23<00:26,  1.10s/it, avr_loss=0.147]steps:  76%|███████▌  | 76/100 [01:23<00:26,  1.10s/it, avr_loss=0.148]steps:  77%|███████▋  | 77/100 [01:24<00:25,  1.10s/it, avr_loss=0.148]steps:  77%|███████▋  | 77/100 [01:24<00:25,  1.10s/it, avr_loss=0.146]steps:  78%|███████▊  | 78/100 [01:25<00:24,  1.10s/it, avr_loss=0.146]steps:  78%|███████▊  | 78/100 [01:25<00:24,  1.10s/it, avr_loss=0.145]steps:  79%|███████▉  | 79/100 [01:26<00:23,  1.10s/it, avr_loss=0.145]steps:  79%|███████▉  | 79/100 [01:26<00:23,  1.10s/it, avr_loss=0.144]steps:  80%|████████  | 80/100 [01:27<00:21,  1.10s/it, avr_loss=0.144]steps:  80%|████████  | 80/100 [01:27<00:21,  1.10s/it, avr_loss=0.147]steps:  81%|████████  | 81/100 [01:28<00:20,  1.09s/it, avr_loss=0.147]steps:  81%|████████  | 81/100 [01:28<00:20,  1.09s/it, avr_loss=0.146]steps:  82%|████████▏ | 82/100 [01:29<00:19,  1.09s/it, avr_loss=0.146]steps:  82%|████████▏ | 82/100 [01:29<00:19,  1.09s/it, avr_loss=0.145]steps:  83%|████████▎ | 83/100 [01:30<00:18,  1.09s/it, avr_loss=0.145]steps:  83%|████████▎ | 83/100 [01:30<00:18,  1.09s/it, avr_loss=0.147]steps:  84%|████████▍ | 84/100 [01:31<00:17,  1.09s/it, avr_loss=0.147]steps:  84%|████████▍ | 84/100 [01:31<00:17,  1.09s/it, avr_loss=0.148]steps:  85%|████████▌ | 85/100 [01:32<00:16,  1.09s/it, avr_loss=0.148]steps:  85%|████████▌ | 85/100 [01:32<00:16,  1.09s/it, avr_loss=0.149]steps:  86%|████████▌ | 86/100 [01:33<00:15,  1.09s/it, avr_loss=0.149]steps:  86%|████████▌ | 86/100 [01:33<00:15,  1.09s/it, avr_loss=0.147]steps:  87%|████████▋ | 87/100 [01:34<00:14,  1.09s/it, avr_loss=0.147]steps:  87%|████████▋ | 87/100 [01:34<00:14,  1.09s/it, avr_loss=0.146]steps:  88%|████████▊ | 88/100 [01:35<00:13,  1.09s/it, avr_loss=0.146]steps:  88%|████████▊ | 88/100 [01:35<00:13,  1.09s/it, avr_loss=0.148]steps:  89%|████████▉ | 89/100 [01:36<00:11,  1.09s/it, avr_loss=0.148]steps:  89%|████████▉ | 89/100 [01:36<00:11,  1.09s/it, avr_loss=0.147]steps:  90%|█████████ | 90/100 [01:37<00:10,  1.09s/it, avr_loss=0.147]steps:  90%|█████████ | 90/100 [01:37<00:10,  1.09s/it, avr_loss=0.15] steps:  91%|█████████ | 91/100 [01:38<00:09,  1.08s/it, avr_loss=0.15]steps:  91%|█████████ | 91/100 [01:38<00:09,  1.08s/it, avr_loss=0.154]steps:  92%|█████████▏| 92/100 [01:39<00:08,  1.08s/it, avr_loss=0.154]steps:  92%|█████████▏| 92/100 [01:39<00:08,  1.08s/it, avr_loss=0.157]steps:  93%|█████████▎| 93/100 [01:40<00:07,  1.09s/it, avr_loss=0.157]steps:  93%|█████████▎| 93/100 [01:40<00:07,  1.09s/it, avr_loss=0.159]steps:  94%|█████████▍| 94/100 [01:41<00:06,  1.08s/it, avr_loss=0.159]steps:  94%|█████████▍| 94/100 [01:41<00:06,  1.08s/it, avr_loss=0.158]steps:  95%|█████████▌| 95/100 [01:42<00:05,  1.08s/it, avr_loss=0.158]steps:  95%|█████████▌| 95/100 [01:42<00:05,  1.08s/it, avr_loss=0.16] steps:  96%|█████████▌| 96/100 [01:43<00:04,  1.08s/it, avr_loss=0.16]steps:  96%|█████████▌| 96/100 [01:43<00:04,  1.08s/it, avr_loss=0.158]steps:  97%|█████████▋| 97/100 [01:44<00:03,  1.08s/it, avr_loss=0.158]steps:  97%|█████████▋| 97/100 [01:44<00:03,  1.08s/it, avr_loss=0.159]steps:  98%|█████████▊| 98/100 [01:45<00:02,  1.08s/it, avr_loss=0.159]steps:  98%|█████████▊| 98/100 [01:45<00:02,  1.08s/it, avr_loss=0.158]steps:  99%|█████████▉| 99/100 [01:46<00:01,  1.08s/it, avr_loss=0.158]steps:  99%|█████████▉| 99/100 [01:46<00:01,  1.08s/it, avr_loss=0.158]steps: 100%|██████████| 100/100 [01:47<00:00,  1.08s/it, avr_loss=0.158]steps: 100%|██████████| 100/100 [01:49<00:00,  1.09s/it, avr_loss=0.158]2026-04-11 16:39:06 INFO     model saved.                  train_network.py:1714
+steps: 100%|██████████| 100/100 [01:49<00:00,  1.09s/it, avr_loss=0.158]
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/vangogh/vangogh_sdxl_style_lora-step00000050.safetensors
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/vangogh/vangogh_sdxl_style_lora-step00000100.safetensors
+
+saving checkpoint: /mnt/kai_ckp/model/Assignment2_ca6114/vangogh/vangogh_sdxl_style_lora.safetensors

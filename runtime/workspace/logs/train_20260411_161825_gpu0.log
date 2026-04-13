@@ -1,0 +1,94 @@
+workspace=vangogh
+gpu=0
+base_model=/mnt/kai_ckp/model/Assignment2_ca6114/sd_xl_base_1.0.safetensors
+train_root=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/dataset_train
+log=/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/workspace/logs/train_20260411_161825_gpu0.log
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: HTTPSConnection(host='huggingface.co', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/openai/clip-vit-large-patch14/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NewConnectionError("HTTPSConnection(host='huggingface.co', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 234, in <module>
+    trainer.train(args)
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/train_network.py", line 490, in train
+    tokenize_strategy = self.get_tokenize_strategy(args)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/sdxl_train_network.py", line 70, in get_tokenize_strategy
+    return strategy_sdxl.SdxlTokenizeStrategy(args.max_token_length, args.tokenizer_cache_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/strategy_sdxl.py", line 24, in __init__
+    self.tokenizer1 = self._load_tokenizer(CLIPTokenizer, TOKENIZER1_PATH, tokenizer_cache_dir=tokenizer_cache_dir)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/shared/sd-scripts/library/strategy_base.py", line 65, in _load_tokenizer
+    tokenizer = model_class.from_pretrained(model_id, subfolder=subfolder)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 1956, in from_pretrained
+    for template in list_repo_templates(
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/utils/hub.py", line 167, in list_repo_templates
+    return [
+           ^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/transformers/utils/hub.py", line 167, in <listcomp>
+    return [
+           ^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 3171, in list_repo_tree
+    for path_info in paginate(path=tree_url, headers=headers, params={"recursive": recursive, "expand": expand}):
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_pagination.py", line 36, in paginate
+    r = session.get(path, params=params, headers=headers)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/sessions.py", line 605, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/world_foundational_model/kai/chuzhong/Assignment2_ca6114/runtime/venvs/sdscripts/lib/python3.11/site-packages/requests/adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/openai/clip-vit-large-patch14/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NewConnectionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable"))'), '(Request ID: 38a26279-4ba5-45db-88e4-60f21aa5ff02)')
